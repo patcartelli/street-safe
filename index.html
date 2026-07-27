@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Street Safe — safety-weighted walking routes</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="wordmark">
+      <span class="wordmark-mark">◆</span> STREET&nbsp;SAFE
+    </div>
+    <div class="topbar-sub">walking routes, weighted for safety — prototype / mock data</div>
+  </header>
+
+  <main class="layout">
+
+    <section class="map-pane">
+      <div id="map"></div>
+
+      <div class="search-bar">
+        <div class="field-group">
+          <label for="start-select">From</label>
+          <select id="start-select"></select>
+        </div>
+        <div class="field-group">
+          <label for="end-select">To</label>
+          <select id="end-select"></select>
+        </div>
+        <button id="route-btn">Find safe route</button>
+      </div>
+    </section>
+
+    <aside class="readout-pane">
+      <div id="readout-empty" class="readout-empty">
+        <p>Pick a start and destination, then find a route.</p>
+        <p class="readout-empty-sub">This demo scores routes against a mock crash dataset for South Orange, NJ — swap in real municipal data once confirmed (see project notes).</p>
+      </div>
+
+      <div id="readout-content" class="readout-content hidden">
+
+        <div class="readout-block">
+          <h2>Why this route</h2>
+          <ul id="why-list" class="why-list"></ul>
+        </div>
+
+        <div class="readout-block">
+          <h2>Tradeoff</h2>
+          <p id="tradeoff-text" class="tradeoff-text"></p>
+        </div>
+
+        <div class="readout-block">
+          <h2>Risk profile along the route</h2>
+          <div id="risk-strip" class="risk-strip"></div>
+          <div class="risk-strip-legend">
+            <span><i class="dot dot-low"></i> low</span>
+            <span><i class="dot dot-med"></i> caution</span>
+            <span><i class="dot dot-high"></i> high-risk intersection nearby</span>
+          </div>
+        </div>
+
+        <div class="readout-block">
+          <h2>Flagged intersections</h2>
+          <ul id="hazard-list" class="hazard-list"></ul>
+        </div>
+
+      </div>
+    </aside>
+
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="data/mock-crashes.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
