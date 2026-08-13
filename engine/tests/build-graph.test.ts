@@ -38,6 +38,8 @@ test('buildGraph: filtering, intersection splitting, components', () => {
   assert.equal(g.nodes.get('5')!.signal, true);
   assert.equal(report.waysExcluded, 1);
   assert.ok(report.largestComponentPct > 0.6);
+  // Fixture has no crossing-tagged nodes, so crossing coverage must be 0.
+  assert.equal(report.tagCoverage.crossing, 0);
 });
 
 test('roadKey: same street across the intersection shares a key despite way split', () => {

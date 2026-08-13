@@ -1,4 +1,4 @@
-import { haversineM } from '../src/geo.js';
+import { haversineM, bearingDeg, bearingDiffDeg, pointSegDistM } from '../src/geo.js';
 import { segmentLts } from '../src/lts.js';
 import type { GraphEdge, GraphNode, SerializedGraph } from '../src/graph.js';
 
@@ -34,16 +34,51 @@ export function buildGraph(osm: OsmJson): { graph: SerializedGraph; report: Buil
   const kept = ways.filter((w) => !excluded(w.tags));
   const waysExcluded = ways.length - kept.length;
 
+  // Sidewalk representation handling (spec Stage 2): collapse footway=sidewalk
+  // ways onto their parallel parent road; keep unmatched ones as footway edges.
+  const sidewalkWays = kept.filter((w) => w.tags.footway === 'sidewalk');
+  const roadWaysAll = kept.filter((w) => !PEDESTRIAN_ONLY.has(w.tags.highway));
+  let sidewalkCollapsed = 0;
+  const collapsedIds = new Set<number>();
+  for (const sw of sidewalkWays) {
+    const pts = sw.nodes.map((n) => osmNodes.get(n)).filter((n): n is OsmNode => !!n);
+    if (pts.length < 2) continue;
+    const mi = Math.floor(pts.length / 2) - (pts.length % 2 === 0 ? 1 : 0);
+    const a = pts[mi], b = pts[Math.min(mi + 1, pts.length - 1)];
+    const midLat = (a.lat + b.lat) / 2, midLon = (a.lon + b.lon) / 2;
+    const swBearing = bearingDeg(a.lat, a.lon, b.lat, b.lon);
+    let matched: OsmWay | null = null;
+    for (const rw of roadWaysAll) {
+      for (let i = 1; i < rw.nodes.length; i++) {
+        const p = osmNodes.get(rw.nodes[i - 1]), q = osmNodes.get(rw.nodes[i]);
+        if (!p || !q) continue;
+        if (pointSegDistM(midLat, midLon, p.lat, p.lon, q.lat, q.lon) <= 25 &&
+            bearingDiffDeg(swBearing, bearingDeg(p.lat, p.lon, q.lat, q.lon)) <= 20) {
+          matched = rw; break;
+        }
+      }
+      if (matched) break;
+    }
+    if (matched) {
+      collapsedIds.add(sw.id);
+      sidewalkCollapsed++;
+      if (!matched.tags.sidewalk || matched.tags.sidewalk === 'no' || matched.tags.sidewalk === 'none') {
+        matched.tags = { ...matched.tags, sidewalk: 'yes' };
+      }
+    }
+  }
+  const keptAfterCollapse = kept.filter((w) => !collapsedIds.has(w.id));
+
   // Intersections: nodes used by ≥2 kept ways, or way endpoints.
   const useCount = new Map<number, number>();
-  for (const w of kept) for (const id of new Set(w.nodes)) useCount.set(id, (useCount.get(id) ?? 0) + 1);
+  for (const w of keptAfterCollapse) for (const id of new Set(w.nodes)) useCount.set(id, (useCount.get(id) ?? 0) + 1);
   const isIntersection = (id: number, w: OsmWay) =>
     (useCount.get(id) ?? 0) >= 2 || id === w.nodes[0] || id === w.nodes[w.nodes.length - 1];
 
   // Split ways at intersections into edges, keeping interior geometry.
   const edges: GraphEdge[] = [];
   const usedNodeIds = new Set<number>();
-  for (const w of kept) {
+  for (const w of keptAfterCollapse) {
     const { lts, reasons, steps } = segmentLts(w.tags);
     let chain: number[] = [];
     for (const id of w.nodes) {
@@ -100,19 +135,17 @@ export function buildGraph(osm: OsmJson): { graph: SerializedGraph; report: Buil
   });
 
   // Tag coverage over road (non-pedestrian-only) kept ways.
-  const roadWays = kept.filter((w) => !PEDESTRIAN_ONLY.has(w.tags.highway));
+  const roadWays = keptAfterCollapse.filter((w) => !PEDESTRIAN_ONLY.has(w.tags.highway));
   const frac = (key: string) => roadWays.length ? roadWays.filter((w) => w.tags[key] != null).length / roadWays.length : 0;
 
   return {
     graph: { nodes, edges: keptEdges },
     report: {
       waysTotal: ways.length, waysExcluded,
-      sidewalkSeparateWays: 0, sidewalkCollapsed: 0, sidewalkUnmatched: 0, // Task 6 fills these
+      sidewalkSeparateWays: sidewalkWays.length, sidewalkCollapsed, sidewalkUnmatched: sidewalkWays.length - sidewalkCollapsed,
       nodesTotal: nodes.length, largestComponentPct,
-      // crossing coverage = crossing-tagged nodes per graph node — the spec
-      // explicitly wants this number visible (thin coverage collapses the
-      // crossing-quality discounts into a uniform penalty).
-      tagCoverage: { sidewalk: frac('sidewalk'), maxspeed: frac('maxspeed'), lanes: frac('lanes'), crossing: crossings.length / Math.max(1, nodes.length) },
+      // crossing coverage = graph nodes with a non-null crossing association ÷ graph nodes.
+      tagCoverage: { sidewalk: frac('sidewalk'), maxspeed: frac('maxspeed'), lanes: frac('lanes'), crossing: nodes.filter((n) => n.crossing !== null).length / Math.max(1, nodes.length) },
       signalNodes: nodes.filter((n) => n.signal).length,
     },
   };
