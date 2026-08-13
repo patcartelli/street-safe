@@ -47,23 +47,26 @@ export function buildGraph(osm: OsmJson): { graph: SerializedGraph; report: Buil
     const a = pts[mi], b = pts[Math.min(mi + 1, pts.length - 1)];
     const midLat = (a.lat + b.lat) / 2, midLon = (a.lon + b.lon) / 2;
     const swBearing = bearingDeg(a.lat, a.lon, b.lat, b.lon);
-    let matched: OsmWay | null = null;
+    let bestDist = Infinity, bestWay: OsmWay | null = null;
     for (const rw of roadWaysAll) {
       for (let i = 1; i < rw.nodes.length; i++) {
         const p = osmNodes.get(rw.nodes[i - 1]), q = osmNodes.get(rw.nodes[i]);
         if (!p || !q) continue;
-        if (pointSegDistM(midLat, midLon, p.lat, p.lon, q.lat, q.lon) <= 25 &&
+        const dist = pointSegDistM(midLat, midLon, p.lat, p.lon, q.lat, q.lon);
+        if (dist <= 25 &&
             bearingDiffDeg(swBearing, bearingDeg(p.lat, p.lon, q.lat, q.lon)) <= 20) {
-          matched = rw; break;
+          if (dist < bestDist) {
+            bestDist = dist;
+            bestWay = rw;
+          }
         }
       }
-      if (matched) break;
     }
-    if (matched) {
+    if (bestWay) {
       collapsedIds.add(sw.id);
       sidewalkCollapsed++;
-      if (!matched.tags.sidewalk || matched.tags.sidewalk === 'no' || matched.tags.sidewalk === 'none') {
-        matched.tags = { ...matched.tags, sidewalk: 'yes' };
+      if (!bestWay.tags.sidewalk || bestWay.tags.sidewalk === 'no' || bestWay.tags.sidewalk === 'none') {
+        bestWay.tags = { ...bestWay.tags, sidewalk: 'yes' };
       }
     }
   }
