@@ -9,7 +9,7 @@ A→B walking navigation that weighs safety alongside speed — for a small, wal
 - **A real, standalone walking-route engine (`engine/`)**, built from actual OpenStreetMap street/sidewalk geometry for South Orange, NJ, weighted by a real crash-derived risk surface and a pedestrian-comfort structural prior:
   - **Risk surface** (`engine/artifacts/risk.json`): 52 clusters snapped from real 2022–23 NJDOT crash point data (recovered from the state's crash-map HTML — the CSV export was unavailable; see extraction notes in `engine/build/extract-points.ts`), each carrying crash counts, injury/VRU counts, dominant cause, and a computed stress score.
   - **Pedestrian-LTS structural prior** (`engine/src/lts.ts`): every street/crossing carries an intrinsic stress rating derived from road class, speed, lane count, and crossing control — independent of whether a crash was ever recorded there. This is a **project-defined adaptation**, not the canonical Mekuria & Furth LTS methodology; it borrows the concept, not the published rubric.
-  - **λ-weighted router** (`engine/src/router.ts`): a single tunable knob (λ) trades route distance against combined LTS + crash-risk cost — λ=0 is shortest-path, higher λ increasingly detours around structurally stressful streets and known crash clusters.
+  - **λ-weighted router** (`engine/src/router.ts`): a single tunable knob (λ) trades route distance against combined LTS + crash-risk cost — λ=0 is shortest-path, higher λ increasingly detours around structural LTS stress. Crash-cluster avoidance is not yet validated (see `npm run validate`'s known assert-2 finding below), and a known driveway-crossing overcharge (`crossingAt` in `router.ts`) means today's higher-λ routing primarily responds to structural stress rather than "structurally stressful streets and known crash clusters" cleanly — see the breadcrumb in `router.ts` for the model gap.
   - **Explainability** (`engine/src/explain.ts`): per-segment stress attribution and flagged high-risk nodes along the chosen route, with dominant crash cause where available.
   - **Validation harness** (`engine/build/validate.ts`, run via `npm run validate`): sweeps λ across a fixed station-to-school pair, asserting distance/stress trend correctly, checking hotspot exposure and safety-corridor overlap, and sanity-checking output distance against a cached OSRM foot-routing baseline.
 - **The browser demo** (`index.html` / `app.js`) is the **old, pre-engine flow**: it still calls [OSRM](https://project-osrm.org/)'s public demo router directly and re-scores alternatives against `data/mock-crashes.js`, an invented dataset. It has **not yet been wired to the new `engine/`** — that cutover is future work.
@@ -27,11 +27,30 @@ A→B walking navigation that weighs safety alongside speed — for a small, wal
 
 ## Running it
 
-No build step. Open `index.html` in a browser, or serve the folder locally:
+The browser demo (`index.html` / `app.js`, the legacy OSRM-rescoring prototype) needs no build step:
 
 ```
 npx serve .
 ```
+
+The engine (`engine/`) is a separate, standalone TypeScript pipeline:
+
+```
+npm install
+npm test              # unit + integration tests
+npm run build-engine  # rebuild engine/artifacts/{graph,risk,build-report}.json from source data
+npm run validate      # sweep λ, sanity-check against an OSRM baseline
+```
+
+`npm run build-engine` **requires** the local, uncommitted `south_orange_vehicles_joined.csv`
+(crash-cause data) at `~/Documents/Claude/Projects/Linear/`, or set `SAFE_ROUTES_DATA_DIR` to
+point elsewhere. It's deliberately not in the repo for privacy. A clean clone can't rebuild the
+artifacts from scratch, but the committed artifacts in `engine/artifacts/` make everything else
+(routing, explainability, tests, validation) work without it.
+
+`npm run validate` **currently exits 1 by design** on a known, documented model finding —
+see the assert-2 breadcrumb in `engine/build/validate.ts` for the diagnosis. This is expected,
+not a broken build.
 
 ## Why walking-first
 
