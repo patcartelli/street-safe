@@ -51,8 +51,7 @@ test('high λ diverts to the quiet route', () => {
 
 test('movement-aware crossing: continuing along Big Ave charges Side St, not Big Ave', () => {
   const g = loadGraph(grid());
-  const r = route(g, noRisk, 'O', 'D', 1)!;
-  // Whatever route wins, inspect the O→M→D moves when forced: use λ=0 (which takes Big Ave).
+  // Inspect the O→M→D moves when forced: use λ=0 (which takes Big Ave).
   const r0 = route(g, noRisk, 'O', 'D', 0)!;
   const mMove = r0.moves.find((m) => m.nodeId === 'M')!;
   assert.equal(mMove.crossedRoad, 'Side St'); // crossing the side street, NOT Big Ave
@@ -80,4 +79,22 @@ test('crash bump at a node adds cost', () => {
   const cleanCost = clean.distanceM + clean.stressCostM;
   const bumpedCost = bumped.distanceM + bumped.stressCostM;
   assert.ok(bumpedCost > cleanCost, `${bumpedCost} vs ${cleanCost}`);
+  // M is an intermediate node on S1→M→S2: crashBumpM(42) = 25 (capped), λ=1.
+  // Intermediate nodes total exactly 1x λ·bump — 0.5 on arrival (bumpHalfM of the
+  // S1→M move) + 0.5 on departure (nodeBumpM of the M→S2 move) = 25 total delta.
+  // S2 (destination) carries no risk, so no additional 0.5x delta there.
+  assert.equal(bumpedCost - cleanCost, 25);
+});
+
+test('origin === dest returns a zero-length route', () => {
+  const g = loadGraph(grid());
+  const r = route(g, noRisk, 'M', 'M', 1)!;
+  assert.deepEqual(r, { nodeIds: ['M'], edgeIdxs: [], distanceM: 0, stressCostM: 0, moves: [], geometry: [] });
+});
+
+test('backward traversal: D → O at λ=0 retraces Big Ave in reverse', () => {
+  const g = loadGraph(grid());
+  const r = route(g, noRisk, 'D', 'O', 0)!;
+  assert.deepEqual(r.nodeIds, ['D', 'M', 'O']);
+  assert.equal(r.distanceM, 400);
 });

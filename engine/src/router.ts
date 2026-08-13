@@ -4,8 +4,12 @@ import { crashBumpM, crossingPenaltyM } from './stress.js';
 import type { NodeRisk } from './risk.js';
 
 export interface MoveDetail {
-  edgeIdx: number; nodeId: string;
-  segPenaltyM: number; crossingPenaltyM: number; crossedRoad: string | null; bumpHalfM: number;
+  edgeIdx: number; nodeId: string;             // node traversed BEFORE this edge ('' for the first move)
+  segPenaltyM: number;                          // λ-weighted LTS length penalty for this edge
+  crossingPenaltyM: number;                     // λ·pureCrossing only (0 when crossedRoad is null)
+  crossedRoad: string | null;
+  nodeBumpM: number;                            // λ·0.5·bump at node v (through/turn node); 0 for the origin move
+  bumpHalfM: number;                            // λ·0.5·bump at the edge's head node
 }
 export interface RawRoute {
   nodeIds: string[]; edgeIdxs: number[];
@@ -68,6 +72,9 @@ export function route(
   destNodeId: string,
   lambda: number,
 ): RawRoute | null {
+  if (originNodeId === destNodeId) {
+    return { nodeIds: [originNodeId], edgeIdxs: [], distanceM: 0, stressCostM: 0, moves: [], geometry: [] };
+  }
   const E = graph.edges.length;
   const dest = graph.nodes.get(destNodeId)!;
   const bump = (nodeId: string) => crashBumpM(risk.get(nodeId)?.stress ?? 0);
@@ -94,7 +101,7 @@ export function route(
       g[d] = cost;
       detail[d] = {
         edgeIdx: idx, nodeId: '', segPenaltyM: segCost(e) - e.lengthM,
-        crossingPenaltyM: 0, crossedRoad: null, bumpHalfM: bumpHalf,
+        crossingPenaltyM: 0, crossedRoad: null, nodeBumpM: 0, bumpHalfM: bumpHalf,
       };
       open.push(cost + h(hd), d);
     }
@@ -121,18 +128,21 @@ export function route(
       const exclude = new Set([inKey, roadKey(oe)]);
       const { maxLts, crossedRoad } = crossingAt(graph, v, exclude);
       const vNode = graph.nodes.get(v)!;
-      const xPenalty = maxLts > 0
-        ? crossingPenaltyM(maxLts, vNode.signal, vNode.crossing, bump(v))
-        : bump(v); // no crossed road: bump still applies at the node
+      // pureCrossing excludes the node's bump (bumpM=0) — bump is attributed separately below
+      // so each intermediate node totals exactly 1x lambda*bump (0.5 on arrival, 0.5 on departure).
+      const pureCrossing = maxLts > 0
+        ? crossingPenaltyM(maxLts, vNode.signal, vNode.crossing, 0)
+        : 0; // no crossed road: no crossing penalty (bump still applies at the node, see nodeBump)
+      const nodeBump = lambda * 0.5 * bump(v);
       const hd = head(oe, ofwd);
       const bumpHalf = lambda * 0.5 * bump(hd);
-      const cost = g[d] + segCost(oe) + lambda * xPenalty + bumpHalf;
+      const cost = g[d] + segCost(oe) + lambda * pureCrossing + nodeBump + bumpHalf;
       if (cost < g[od]) {
         g[od] = cost;
         cameFrom[od] = d;
         detail[od] = {
           edgeIdx: outIdx, nodeId: v, segPenaltyM: segCost(oe) - oe.lengthM,
-          crossingPenaltyM: lambda * xPenalty, crossedRoad, bumpHalfM: bumpHalf,
+          crossingPenaltyM: lambda * pureCrossing, crossedRoad, nodeBumpM: nodeBump, bumpHalfM: bumpHalf,
         };
         open.push(cost + h(hd), od);
       }
