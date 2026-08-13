@@ -51,6 +51,13 @@ class Heap {
 const head = (e: GraphEdge, fwd: boolean) => (fwd ? e.to : e.from);
 const tail = (e: GraphEdge, fwd: boolean) => (fwd ? e.from : e.to);
 
+// KNOWN MODEL GAP as of 2026-08-13 — crossingAt charges the highest-LTS incident way with
+// no highway-class filter, so highway=service driveways/parking aisles price identically to
+// residential street crossings (25 m). On the real graph this makes most flagged_nodes on a
+// typical route spurious driveway charges and materially drives route choice at λ≥1;
+// plausible co-contributor to the validate.ts assert-2 exposure finding. Fix belongs with the
+// STC-152 snap-model rework (candidate: skip or LTS-1 highway=service in crossingAt). Do not
+// silently change the pricing here.
 function crossingAt(
   graph: Graph, nodeId: string, excludeKeys: Set<string>,
 ): { maxLts: number; crossedRoad: string | null } {
@@ -72,6 +79,7 @@ export function route(
   destNodeId: string,
   lambda: number,
 ): RawRoute | null {
+  if (lambda < 0) throw new Error('lambda must be >= 0');
   if (originNodeId === destNodeId) {
     return { nodeIds: [originNodeId], edgeIdxs: [], distanceM: 0, stressCostM: 0, moves: [], geometry: [] };
   }
