@@ -11,7 +11,7 @@ export interface BuildReport {
   waysTotal: number; waysExcluded: number;
   sidewalkSeparateWays: number; sidewalkCollapsed: number; sidewalkUnmatched: number;
   nodesTotal: number; largestComponentPct: number;
-  tagCoverage: { sidewalk: number; maxspeed: number; lanes: number; crossing: number };
+  tagCoverage: { sidewalk: number; maxspeed: number; lanes: number; crossing: number; crossingRaw: number };
   signalNodes: number;
 }
 
@@ -126,6 +126,11 @@ export function buildGraph(osm: OsmJson): { graph: SerializedGraph; report: Buil
   const largestComponentPct = usedNodeIds.size ? (compSize.get(mainRoot!) ?? 0) / usedNodeIds.size : 0;
 
   // Node records with signal/crossing association within 20 m.
+  // NOTE: this 20 m radius association spills a node's crossing tag onto its neighbors
+  // (48% of graph nodes have a neighbor within 20 m), so the "associated" tagCoverage.crossing
+  // figure below is systematically inflated relative to the exact-node-identity truth
+  // (tagCoverage.crossingRaw — see below), which discounts crossings that exist but aren't on
+  // this exact node. Radius rework is bundled with the STC-152 model fixes.
   const signals: OsmNode[] = [...osmNodes.values()].filter((n) => n.tags?.highway === 'traffic_signals');
   const crossings: OsmNode[] = [...osmNodes.values()].filter((n) => n.tags?.crossing);
   const nodeIds = new Set<string>();
@@ -147,8 +152,15 @@ export function buildGraph(osm: OsmJson): { graph: SerializedGraph; report: Buil
       waysTotal: ways.length, waysExcluded,
       sidewalkSeparateWays: sidewalkWays.length, sidewalkCollapsed, sidewalkUnmatched: sidewalkWays.length - sidewalkCollapsed,
       nodesTotal: nodes.length, largestComponentPct,
-      // crossing coverage = graph nodes with a non-null crossing association ÷ graph nodes.
-      tagCoverage: { sidewalk: frac('sidewalk'), maxspeed: frac('maxspeed'), lanes: frac('lanes'), crossing: nodes.filter((n) => n.crossing !== null).length / Math.max(1, nodes.length) },
+      // crossing coverage = graph nodes with a non-null crossing association (20 m radius,
+      // see NOTE above) ÷ graph nodes. crossingRaw is the exact-node-identity figure: graph
+      // nodes whose OWN OSM node carries a crossing tag ÷ graph nodes, no radius involved —
+      // this is the honest model-grounding signal; the associated figure overstates it.
+      tagCoverage: {
+        sidewalk: frac('sidewalk'), maxspeed: frac('maxspeed'), lanes: frac('lanes'),
+        crossing: nodes.filter((n) => n.crossing !== null).length / Math.max(1, nodes.length),
+        crossingRaw: [...nodeIds].filter((id) => osmNodes.get(Number(id))?.tags?.crossing != null).length / Math.max(1, nodes.length),
+      },
       signalNodes: nodes.filter((n) => n.signal).length,
     },
   };
