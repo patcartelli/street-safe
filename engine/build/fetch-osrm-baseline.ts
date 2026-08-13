@@ -2,9 +2,10 @@
  *  public demo server is rate-limited; the harness must never call it live). */
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { VALIDATION_PAIR } from './validation-pair.js';
 
 const PAIRS = [
-  { name: 'station-to-south-mountain', from: [40.7461, -74.2606], to: [40.7380, -74.2679] },
+  { name: VALIDATION_PAIR.name, from: [VALIDATION_PAIR.from.lat, VALIDATION_PAIR.from.lon], to: [VALIDATION_PAIR.to.lat, VALIDATION_PAIR.to.lon] },
 ];
 const out: Record<string, { distanceM: number; durationS: number }> = {};
 for (const p of PAIRS) {
