@@ -18,7 +18,19 @@ function parseMph(maxspeed: string | undefined): number | null {
 export function segmentLts(tags: Record<string, string>): { lts: Lts; reasons: LtsReason[]; steps: boolean } {
   const hw = tags.highway ?? 'unclassified';
   let score = BASE[hw] ?? 2;
-  const reasons: LtsReason[] = [{ reason: `${hw} (base ${score})`, source: 'tagged' }];
+  const reasons: LtsReason[] = [];
+  let hwSource: Source = 'tagged';
+
+  if (!tags.highway) {
+    reasons.push({ reason: 'highway unknown, assumed unclassified (base 2)', source: 'default' });
+    hwSource = 'default';
+  } else if (!(hw in BASE)) {
+    reasons.push({ reason: `${hw} not in rubric, assumed base 2`, source: 'default' });
+    hwSource = 'default';
+  } else {
+    reasons.push({ reason: `${hw} (base ${score})`, source: 'tagged' });
+  }
+
   const isRoad = !PEDESTRIAN_ONLY.has(hw);
 
   const sw = tags.sidewalk;
@@ -50,7 +62,7 @@ export function segmentLts(tags: Record<string, string>): { lts: Lts; reasons: L
  *  Clamped 1–4 after discounts (spec: a discount never yields a negative penalty). */
 export function crossingLts(maxCrossedLts: number, signal: boolean, crossing: string | null): number {
   let lts = maxCrossedLts;
-  if (signal) lts -= 1;
-  else if (crossing === 'marked' || crossing === 'zebra' || crossing === 'uncontrolled' || crossing === 'traffic_signals') lts -= 0.5;
+  if (signal || crossing === 'traffic_signals') lts -= 1;
+  else if (crossing === 'marked' || crossing === 'zebra' || crossing === 'uncontrolled') lts -= 0.5; // uncontrolled is OSM's legacy tag for marked, unsignalized crossing
   return Math.min(4, Math.max(1, lts));
 }

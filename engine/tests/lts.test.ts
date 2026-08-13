@@ -39,3 +39,17 @@ test('crossingLts discounts and clamps', () => {
   assert.equal(crossingLts(4, false, null), 4);       // unmarked: full
   assert.equal(crossingLts(1, true, null), 1);        // clamp floor — never negative penalty
 });
+
+test('highway unknown with default provenance', () => {
+  const noTag = segmentLts({});
+  assert.equal(noTag.lts, 2);
+  assert.ok(noTag.reasons.some((r) => r.source === 'default' && /highway unknown/.test(r.reason)));
+  const unknownValue = segmentLts({ highway: 'invalid_road_type' });
+  assert.equal(unknownValue.lts, 2);
+  assert.ok(unknownValue.reasons.some((r) => r.source === 'default' && /invalid_road_type/.test(r.reason)));
+});
+
+test('traffic_signals and uncontrolled crossing discounts', () => {
+  assert.equal(crossingLts(4, false, 'traffic_signals'), 3);  // signalized: −1
+  assert.equal(crossingLts(4, false, 'uncontrolled'), 3.5);   // legacy marked tag: −0.5
+});
