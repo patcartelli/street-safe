@@ -1,0 +1,633 @@
+lat,lon,kind,year,date,crash_type,loc,case
+40.747582,-74.282891,pdo,2020,12/29/2020,Rear-end,South Orange Ave (CR 510) × Glenview Ave,C-2020-003108
+40.74537,-74.26536,pdo,2020,07/27/2020,Struck parked vehicle,Ridgewood Rd / S Ridgewood Rd × W 3Rd St,I-2020-012617
+40.74383,-74.24253,pdo,2020,08/30/2020,Animal,Cameron Rd × S. Kingman Road,I-2020-014915
+40.73937,-74.24801,pdo,2021,08/04/2021,Struck parked vehicle,Mt Vernon Pl / W Allen St / Wilden Pl × Eder Ter,C-2021-001750
+40.747572,-74.263819,pdo,2021,11/10/2021,Backing,South Orange Ave (CR 510) × N Ridgewood Rd / S Ridgewood Rd,C-2021-002667
+40.73868,-74.25208,pdo,2021,10/28/2021,Right angle,Irvington Ave (CR 665) × Seton Pl,C21048235
+40.7465,-74.261,vru,2021,12/16/2021,Pedestrian,Trenchard Pl × Route 510 S. Orange Avenue,I-2021-022853
+40.742397,-74.261506,pdo,2022,11/12/2022,Struck parked vehicle,Fourth St ** × Cr 638 / Valley Rd,2022-023704
+40.745217,-74.254495,pdo,2022,12/30/2022,Struck parked vehicle,South Orange Ave (CR 510) × Prospect St,2022-028221
+40.757605,-74.256396,vru,2022,07/05/2022,Pedalcyclist,Hamilton Rd / Montrose Ave ** × Meadowbrook Ln,22-012691
+40.747094,-74.282474,pdo,2022,03/03/2022,Sideswipe (same dir),South Orange Ave (CR 510) × Speir Dr,C-2022-000438
+40.746066,-74.279263,pdo,2022,05/19/2022,Rear-end,South Orange Ave (CR 510) × Crest Dr,C-2022-001183
+40.748574,-74.284252,pdo,2022,10/13/2022,Fixed object,South Orange Ave (CR 510) × Glenview Ave,C-2022-002810
+40.747445,-74.282813,pdo,2022,12/16/2022,Sideswipe (same dir),South Orange Ave (CR 510) × Glenview Ave,C-2022-003402
+40.744803,-74.261231,pdo,2022,08/19/2022,Right angle,Second St × Sloan St,I-2022--016060
+40.745554,-74.269969,vru,2022,06/23/2022,Pedestrian,Western Dr Sq ** × West End Rd,I-2022-011864
+40.759375,-74.263207,injury,2022,06/24/2022,Right angle,CR 577 (Prospect/Wyoming) × Blanchard Rd,I-2022-011927
+40.740295,-74.252842,pdo,2022,06/25/2022,Left turn / U-turn,University Ct / Ward Pl ** × Cr 665 / Irvington Ave,I-2022-012035
+40.754092,-74.252833,pdo,2022,06/25/2022,Rear-end,Vose Ln ** × Stewart Pl,I-2022-012037
+40.747625,-74.263478,injury,2022,06/26/2022,Rear-end,Forest/Maplewd/N-S Ridgewd/S Valley/Valley/Walton × Route 510 / S Orange Ave,I-2022-012076
+40.747911,-74.243426,pdo,2022,06/28/2022,Backing,Irving Ave ** × Self Pl,I-2022-012197
+40.747469,-74.27373,injury,2022,07/01/2022,Head-on,South Orange Ave (CR 510) × Route 577 / N Wyoming Ave,I-2022-012441
+40.745733,-74.257894,pdo,2022,07/02/2022,Sideswipe (same dir),South Orange Ave (CR 510) × Cr 638 / Scotland Rd / Valley St,I-2022-012493
+40.747913,-74.271938,pdo,2022,07/04/2022,Rear-end,South Orange Ave (CR 510) × Route 577 / N Wyoming Ave,I-2022-012639
+40.746524,-74.26046,pdo,2022,07/05/2022,Struck parked vehicle,South Orange Ave (CR 510) × Sloan St,I-2022-012704
+40.745903,-74.258436,pdo,2022,07/06/2022,Sideswipe (same dir),South Orange Ave (CR 510) × Cr 638 / Village Plaza,I-2022-012763
+40.747598,-74.2577,pdo,2022,07/07/2022,Struck parked vehicle,Comstock Pl ** × Vose Ave,I-2022-012858
+40.758131,-74.261258,pdo,2022,07/11/2022,Struck parked vehicle,Melrose Pl / Overlook Ave ** × Franklin Ter,I-2022-013124
+40.746059,-74.26009,pdo,2022,07/12/2022,Struck parked vehicle,Sloan St × Route 510 / South Orange Ave,I-2022-013202
+40.748852,-74.257125,pdo,2022,07/12/2022,Sideswipe (opp),Vose Ln ** × Mead St,I-2022-013206
+40.745749,-74.240203,pdo,2022,07/12/2022,Left turn / U-turn,South Orange Ave (CR 510) × S Kingman Rd,I-2022-013222
+40.746551,-74.251282,pdo,2022,07/12/2022,Struck parked vehicle,Grove Rd ** × Ralston Ave,I-2022-013228
+40.746866,-74.251,pdo,2022,07/15/2022,Struck parked vehicle,Grove Rd ** × Ralston Ave,I-2022-013414
+40.746543,-74.258899,pdo,2022,07/15/2022,Right angle,South Orange Ave (CR 510) × Vose Ave,I-2022-013434
+40.747021,-74.258496,pdo,2022,07/15/2022,Struck parked vehicle,Vose Ln ** × Taylor Pl,I-2022-013448
+40.745967,-74.241783,pdo,2022,07/20/2022,Rear-end,South Orange Ave (CR 510) × S Centre St,I-2022-013840
+40.741945,-74.25113,pdo,2022,07/22/2022,Fixed object,Mt Vernon Pl / W Allen St / Wilden Pl × Ward Pl,I-2022-013996
+40.754767,-74.265651,pdo,2022,07/25/2022,Sideswipe (same dir),CR 577 (Prospect/Wyoming) × Redmond Rd,I-2022-014211
+40.746113,-74.260025,pdo,2022,07/21/2022,Backing,Sloan St × Route 510 / South Orange Ave,I-2022-014436
+40.750032,-74.259614,pdo,2022,07/31/2022,Right angle,Highland Rd / Mead St ** × Meadowbrook Ln,I-2022-014654
+40.744195,-74.256214,vru,2022,08/02/2022,Pedestrian,Irvington Ave (CR 665) × Prospect St,I-2022-014789
+40.746058,-74.260106,pdo,2022,08/03/2022,Backing,Sloan St × Route 510 / South Orange Ave,I-2022-014871
+40.739902,-74.264431,pdo,2022,08/05/2022,Struck parked vehicle,Valley Street,I-2022-015058
+40.745966,-74.242444,pdo,2022,08/08/2022,Rear-end,South Orange Ave (CR 510) × Centre St / Turrell Ave,I-2022-015240
+40.74467,-74.248031,pdo,2022,08/08/2022,Sideswipe (same dir),South Orange Ave (CR 510) × Radel Ter,I-2022-015250
+40.74596,-74.242462,injury,2022,08/09/2022,Rear-end,South Orange Ave (CR 510) × Centre St / Turrell Ave,I-2022-015309
+40.744654,-74.258357,injury,2022,08/15/2022,Other,First St × Academy Street,I-2022-015737
+40.744254,-74.259985,pdo,2022,08/15/2022,Head-on,Valley St / Scotland Rd (CR 638) × 2Nd St,I-2022-015772
+40.745961,-74.242393,vru,2022,08/16/2022,Pedalcyclist,South Orange Ave (CR 510) × Centre St / Turrell Ave,I-2022-015827
+40.75833,-74.257267,pdo,2022,08/17/2022,Fixed object,Forest/Maplewd/N-S Ridgewd/S Valley/Valley/Walton × Walnut Ct,I-2022-015890
+40.738181,-74.257681,pdo,2022,08/17/2022,Backing,Coudert Pl ** × Richmond Ave,I-2022-015897
+40.746133,-74.259193,vru,2022,08/18/2022,Pedestrian,South Orange Ave (CR 510) × Vose Ave,I-2022-015972
+40.747931,-74.272007,injury,2022,08/20/2022,Sideswipe (opp),South Orange Ave (CR 510) × Route 577 / N Wyoming Ave,I-2022-016120
+40.751753,-74.268333,pdo,2022,08/20/2022,Rear-end,Tillou Rd × Route 577 / Wyoming Ave,I-2022-016135
+40.75172,-74.268419,vru,2022,08/20/2022,Pedestrian,CR 577 (Prospect/Wyoming) × Tillou Rd,I-2022-016145
+40.744893,-74.250929,injury,2022,08/21/2022,Head-on,South Orange Ave (CR 510) × Park Pl,I-2022-016218
+40.742445,-74.261622,pdo,2022,08/22/2022,Left turn / U-turn,Valley St / Scotland Rd (CR 638) × 4Th St,I-2022-016256
+40.742242,-74.254162,injury,2022,08/22/2022,Backing,Riggs Pl × Cr 665,I-2022-016269
+40.754467,-74.254589,pdo,2022,08/24/2022,Sideswipe (same dir),E Clark Cir / Meeker St ** × Mountain House Rd,I-2022-016385
+40.748405,-74.257451,pdo,2022,08/24/2022,Struck parked vehicle,Vose La × Ralston Ave,I-2022-016412
+40.746698,-74.260935,pdo,2022,08/27/2022,Sideswipe (same dir),South Orange Ave (CR 510) × Sloan St,I-2022-016702
+40.74499,-74.2593,injury,2022,08/28/2022,Left turn / U-turn,Valley St / Scotland Rd (CR 638) × 1St St,I-2022-016792
+40.74574,-74.258011,pdo,2022,08/29/2022,Rear-end,South Orange Ave (CR 510) × Cr 638 / Village Plaza,I-2022-016883
+40.749524,-74.255164,pdo,2022,08/30/2022,Right angle,Valley St / Scotland Rd (CR 638) × Raymond Ave,I-2022-016964
+40.745829,-74.275151,injury,2022,08/31/2022,Right angle,CR 577 (Prospect/Wyoming) × Lenox Ave,I-2022-017006
+40.748459,-74.241008,pdo,2022,08/31/2022,Right angle,Hamilton Rd / Montrose Ave ** × Centre St,I-2022-017032
+40.746032,-74.260183,pdo,2022,09/01/2022,Backing,Sloan St × Route 510 / South Orange Ave,I-2022-017089
+40.746753,-74.26117,pdo,2022,09/01/2022,Struck parked vehicle,South Orange Ave (CR 510) × Sloan St,I-2022-017091
+40.7445,-74.259756,pdo,2022,09/01/2022,Right angle,Valley St / Scotland Rd (CR 638) × 2Nd St,I-2022-017099
+40.740059,-74.263603,pdo,2022,09/01/2022,Right angle,Valley St / Scotland Rd (CR 638) × Lackawanna Pl,I-2022-017114
+40.745963,-74.242412,pdo,2022,09/01/2022,Left turn / U-turn,South Orange Ave (CR 510) × Centre St / Turrell Ave,I-2022-017119
+40.749059,-74.240704,pdo,2022,09/06/2022,Other,Centre/N Harrison/S Center/S Harrison/Washington × Hartford Ct,I-2022-017560
+40.74592,-74.259035,pdo,2022,09/07/2022,Struck parked vehicle,South Orange Ave (CR 510) × Vose Ave,I-2022-017658
+40.737936,-74.259993,pdo,2022,09/07/2022,Struck parked vehicle,Garfield Pl ** × Prospect St,I-2022-017684
+40.74571,-74.258004,pdo,2022,09/08/2022,Sideswipe (same dir),South Orange Ave (CR 510) × Cr 638 / Scotland Rd / Valley St,I-2022-017725
+40.754535,-74.260306,pdo,2022,09/08/2022,Right angle,Forest/Maplewd/N-S Ridgewd/S Valley/Valley/Walton × Forest Rd,I-2022-017758
+40.75638,-74.250983,vru,2022,09/10/2022,Pedestrian,Randolph Pl ** × Vose Ave,I-2022-017936
+40.745741,-74.257984,pdo,2022,09/10/2022,Right angle,South Orange Ave (CR 510) × Cr 638 / Scotland Rd / Valley St,I-2022-017956
+40.747941,-74.271535,pdo,2022,09/12/2022,Rear-end,South Orange Ave (CR 510) × Route 577 / N Wyoming Ave,I-2022-018094
+40.747542,-74.263657,injury,2022,09/12/2022,Rear-end,South Orange Ave (CR 510) × N Ridgewood Rd / S Ridgewood Rd,I-2022-018097
+40.743884,-74.249266,pdo,2022,09/13/2022,Backing,University Ct / Ward Pl ** × Route 510 / South Orange Ave,I-2022-018128
+40.745236,-74.257149,pdo,2022,09/13/2022,Right angle,Irvington Ave (CR 665) × Academy St,I-2022-018143
+40.740408,-74.252733,pdo,2022,09/14/2022,Rear-end,University Ct / Ward Pl ** × Cr 665 / Irvington Ave,I-2022-018219
+40.745716,-74.259943,vru,2022,09/14/2022,Pedestrian,Sloan St × First St,I-2022-018222
+40.741912,-74.251184,pdo,2022,09/14/2022,Left turn / U-turn,Mt Vernon Pl / W Allen St / Wilden Pl × Ward Pl,I-2022-018225
+40.745386,-74.256002,pdo,2022,09/15/2022,Rear-end,South Orange Ave (CR 510) × Prospect St,I-2022-018281
+40.747527,-74.273426,pdo,2022,09/15/2022,Sideswipe (same dir),South Orange Ave (CR 510) × Route 577 / N Wyoming Ave,I-2022-018309
+40.738532,-74.265182,pdo,2022,09/16/2022,Sideswipe (opp),Valley St / Scotland Rd (CR 638) × Arnold Ter,I-2022-018365
+40.741862,-74.260214,pdo,2022,09/16/2022,Head-on,Fourth St ** × Academy St,I-2022-018384
+40.742424,-74.261582,pdo,2022,09/16/2022,Fixed object,Fourth St ** × Cr 638 / Valley Rd,I-2022-018395
+40.744309,-74.259894,pdo,2022,09/17/2022,Struck parked vehicle,Valley St / Scotland Rd (CR 638) × 2Nd St,I-2022-018463
+40.751623,-74.265329,pdo,2022,09/19/2022,Struck parked vehicle,Beech Spring Rd,I-2022-018592
+40.744833,-74.250163,pdo,2022,09/19/2022,Sideswipe (same dir),South Orange Ave (CR 510) × Fairview Ave,I-2022-018657
+40.74597,-74.242482,pdo,2022,09/20/2022,Sideswipe (same dir),South Orange Ave (CR 510) × Centre St / Turrell Ave,I-2022-018730
+40.740286,-74.252853,pdo,2022,09/21/2022,Left turn / U-turn,Irvington Ave (CR 665) × Ward Pl,I-2022-018867
+40.750769,-74.261318,pdo,2022,09/22/2022,Left turn / U-turn,Forest/Maplewd/N-S Ridgewd/S Valley/Valley/Walton × Hghland Rd / Mead St,I-2022-018948
+40.750792,-74.261333,pdo,2022,09/22/2022,Right angle,Highland Rd / Mead St ** × N Ridgewood Rd,I-2022-018955
+40.750825,-74.23939,pdo,2022,09/22/2022,Sideswipe (opp),Centre/N Harrison/S Center/S Harrison/Washington × Patricia Ct / Warwick Ave,I-2022-018959
+40.74846,-74.241005,pdo,2022,09/23/2022,Right angle,Hamilton Rd / Montrose Ave ** × Centre St,I-2022-019037
+40.747506,-74.27361,injury,2022,09/23/2022,Right angle,South Orange Ave (CR 510) × Route 577 / S Wyoming Ave,I-2022-019040
+40.739493,-74.252546,pdo,2022,09/28/2022,Rear-end,Irvington Ave (CR 665) × College Pl,I-2022-019469
+40.738037,-74.265656,injury,2022,09/28/2022,Rear-end,Valley St / Scotland Rd (CR 638) × Hixon Pl,I-2022-019501
+40.744151,-74.261735,vru,2022,09/28/2022,Pedestrian,Sloan St × Third St,I-2022-019510
+40.746382,-74.257457,vru,2022,09/28/2022,Pedestrian,Valley St / Scotland Rd (CR 638) × Taylor Pl,I-2022-019511
+40.744666,-74.248415,pdo,2022,09/29/2022,Right angle,South Orange Ave (CR 510) × University Ct / Ward Pl,I-2022-019584
+40.7458,-74.265008,pdo,2022,09/29/2022,Right angle,Third St × S Ridgedale Rd,I-2022-019617
+40.74293,-74.255094,injury,2022,10/01/2022,Left turn / U-turn,Irvington Ave (CR 665) × Cottage St,I-2022-019755
+40.746172,-74.259246,pdo,2022,10/02/2022,Struck parked vehicle,South Orange Ave (CR 510) × Vose Ave,I-2022-019820
+40.745829,-74.275138,pdo,2022,10/02/2022,Right angle,CR 577 (Prospect/Wyoming) × Lenox Ave,I-2022-019832
+40.750418,-74.23969,vru,2022,10/02/2022,Pedestrian,Centre/N Harrison/S Center/S Harrison/Washington × Patricia Ct / Warwick Ave,I-2022-019852
+40.746029,-74.258935,pdo,2022,10/03/2022,Struck parked vehicle,South Orange Ave (CR 510) × Vose Ave,I-2022-019914
+40.745257,-74.255142,pdo,2022,10/04/2022,Rear-end,South Orange Ave (CR 510) × Prospect St,I-2022-019973
+40.744677,-74.24794,pdo,2022,10/04/2022,Sideswipe (same dir),South Orange Ave (CR 510) × University Ct / Ward Pl,I-2022-020008
+40.743893,-74.255934,pdo,2022,10/05/2022,Sideswipe (same dir),Irvington Ave (CR 665) × Prospect St,I-2022-020072
+40.747926,-74.263233,pdo,2022,10/05/2022,Fixed object,Forest/Maplewd/N-S Ridgewd/S Valley/Valley/Walton × Tillou St,I-2022-020107
+40.745114,-74.253345,pdo,2022,10/06/2022,Sideswipe (same dir),South Orange Ave (CR 510) × Cottage St,I-2022-020200
+40.747834,-74.271816,pdo,2022,10/07/2022,Fixed object,South Orange Ave (CR 510) × Route 577 / N Wyoming Ave,I-2022-020305
+40.743701,-74.26051,injury,2022,10/08/2022,Left turn / U-turn,Valley St / Scotland Rd (CR 638) × 3Rd St,I-2022-020372
+40.745882,-74.258378,pdo,2022,10/11/2022,Struck parked vehicle,South Orange Ave (CR 510) × Cr 638 / Scotland Rd / Valley St,I-2022-020641
+40.748001,-74.247141,pdo,2022,10/12/2022,Struck parked vehicle,Turrell Ave ** × Grove Rd,I-2022-020754
+40.745286,-74.255411,pdo,2022,10/13/2022,Sideswipe (same dir),South Orange Ave (CR 510) × Prospect St,I-2022-020855
+40.74239,-74.250723,injury,2022,10/13/2022,Right angle,Gardner Ave × Radel Ter,I-2022-020873
+40.74553,-74.243773,pdo,2022,10/13/2022,Rear-end,South Orange Ave (CR 510) × Warren Ct,I-2022-020916
+40.746685,-74.260857,pdo,2022,10/14/2022,Backing,Sopac Way × South Orange Ave (CR 510),I-2022-021042
+40.73989,-74.253313,vru,2022,10/15/2022,Pedestrian,Radel Ter × Irvington Ave (CR 665),I-2022-021131
+40.745076,-74.260128,pdo,2022,10/16/2022,Struck parked vehicle,First St × Sloan St,I-2022-021161
+40.739745,-74.264076,injury,2022,10/16/2022,Right angle,Valley St / Scotland Rd (CR 638) × Roland Ave,I-2022-021203
+40.743546,-74.260608,pdo,2022,10/16/2022,Struck parked vehicle,Valley St / Scotland Rd (CR 638) × 3Rd St,I-2022-021209
+40.740349,-74.249347,pdo,2022,10/17/2022,Fixed object,Mt Vernon Pl / W Allen St / Wilden Pl × Seton Pl,I-2022-021250
+40.745534,-74.260164,pdo,2022,10/17/2022,Backing,First St,I-2022-021290
+40.743571,-74.258686,injury,2022,10/17/2022,Right angle,Academy St × 2Nd St,I-2022-021292
+40.740817,-74.253187,pdo,2022,10/17/2022,Struck parked vehicle,Irvington Ave (CR 665) × Fairview Ave,I-2022-021303
+40.753578,-74.276662,pdo,2022,10/18/2022,Struck parked vehicle,Spier Dr ** × Hoskier Rd,I-2022-021391
+40.745105,-74.265771,pdo,2022,10/20/2022,Struck parked vehicle,Forest/Maplewd/N-S Ridgewd/S Valley/Valley/Walton × W 3Rd St,I-2022-021625
+40.746586,-74.259123,pdo,2022,10/21/2022,Struck parked vehicle,Vose Ln × South Orange Ave (CR 510),I-2022-021717
+40.745598,-74.258836,pdo,2022,10/22/2022,Struck parked vehicle,Essex County 638 S × Route 510 / S Orange Ave,I-2022-021804
+40.744627,-74.250061,pdo,2022,10/23/2022,Rear-end,Fairview Ave ** × Route 510 / South Orange Ave,I-2022-021911
+40.743624,-74.260773,pdo,2022,10/26/2022,Struck parked vehicle,Third St × Valley St / Scotland Rd (CR 638),I-2022-022182
+40.74152,-74.269003,pdo,2022,10/26/2022,Head-on,Forest/Maplewd/N-S Ridgewd/S Valley/Valley/Walton × Lenox Ave,I-2022-022194
+40.745954,-74.242364,pdo,2022,10/26/2022,Left turn / U-turn,South Orange Ave (CR 510) × Centre St / Turrell Ave,I-2022-022220
+40.736791,-74.261245,injury,2022,10/27/2022,Struck parked vehicle,Prospect St × Prospect Pl,I-2022-022278
+40.745263,-74.257141,vru,2022,10/28/2022,Pedalcyclist,Irvington Ave (CR 665) × Prospect St,I-2022-022401
+40.746081,-74.259073,pdo,2022,10/31/2022,Struck parked vehicle,South Orange Ave (CR 510) × Vose Ave,I-2022-022657
+40.744887,-74.250951,pdo,2022,10/31/2022,Sideswipe (same dir),South Orange Ave (CR 510) × Park Pl,I-2022-022670
+40.746163,-74.259225,vru,2022,10/31/2022,Pedestrian,South Orange Ave (CR 510) × Vose Ave,I-2022-022676
+40.74606,-74.247425,pdo,2022,11/01/2022,Struck parked vehicle,Radel Ter × Elm Ct,I-2022-022747
+40.745277,-74.255247,pdo,2022,11/02/2022,Sideswipe (same dir),South Orange Ave (CR 510) × Prospect St,I-2022-022813
+40.748298,-74.262971,pdo,2022,11/02/2022,Rear-end,Forest/Maplewd/N-S Ridgewd/S Valley/Valley/Walton × Tillou St,I-2022-022845
+40.744192,-74.256168,pdo,2022,11/04/2022,Rear-end,Irvington Ave (CR 665) × Prospect St,I-2022-022976
+40.742817,-74.261309,pdo,2022,11/04/2022,Right angle,Valley St / Scotland Rd (CR 638) × 4Th St,I-2022-022986
+40.740349,-74.2528,pdo,2022,11/04/2022,Rear-end,University Ct / Ward Pl ** × Cr 665 / Irvington Ave,I-2022-023015
+40.746221,-74.259394,pdo,2022,11/05/2022,Struck parked vehicle,South Orange Ave (CR 510) × Vose Ave,I-2022-023097
+40.752709,-74.252038,pdo,2022,11/06/2022,Right angle,Valley St / Scotland Rd (CR 638) × Stewart Pl,I-2022-023165
+40.741179,-74.241224,pdo,2022,11/08/2022,Struck parked vehicle,Varsity Rd ** × Milton Pl,I-2022-023410
+40.743539,-74.260647,pdo,2022,11/13/2022,Right angle,Valley St / Scotland Rd (CR 638) × 3Rd St,I-2022-023787
+40.746048,-74.258912,pdo,2022,11/14/2022,Backing,South Orange Ave (CR 510) × Vose Ave,I-2022-023921
+40.740304,-74.252841,vru,2022,11/19/2022,Pedestrian,Irvington Ave (CR 665) × Ward Pl,I-2022-024411
+40.755228,-74.251971,pdo,2022,11/20/2022,Left turn / U-turn,Montrose Ave × Vose Ave,I-2022-024485
+40.742312,-74.259869,pdo,2022,11/20/2022,Backing,Academy St × 4Th St,I-2022-024496
+40.746598,-74.260676,pdo,2022,11/20/2022,Backing,Sopac Way × South Orange Ave (CR 510),I-2022-024500
+40.757127,-74.268102,pdo,2022,11/22/2022,Struck parked vehicle,Harding Dr / Harding Dr S ** × Laurel Pl,I-2022-024787
+40.744672,-74.259608,pdo,2022,11/27/2022,Right angle,Valley St / Scotland Rd (CR 638) × 1St St,I-2022-025188
+40.744216,-74.256199,injury,2022,11/27/2022,Head-on,Irvington Ave (CR 665) × Prospect St,I-2022-025195
+40.740565,-74.249397,pdo,2022,11/28/2022,Sideswipe (same dir),Mt Vernon Pl / W Allen St / Wilden Pl × Seton Pl,I-2022-025287
+40.746095,-74.257679,pdo,2022,11/29/2022,Rear-end,Valley St / Scotland Rd (CR 638) × Route 510 / S Orange Ave,I-2022-025334
+40.745788,-74.264934,pdo,2022,11/29/2022,Rear-end,Third St × S Ridgedale Rd,I-2022-025381
+40.747518,-74.263507,pdo,2022,11/29/2022,Rear-end,South Orange Ave (CR 510) × N Ridgewood Rd / S Ridgewood Rd,I-2022-025382
+40.743433,-74.260353,pdo,2022,12/01/2022,Struck parked vehicle,Third St × Cr 638 / Valley Rd,I-2022-025629
+40.745832,-74.265043,pdo,2022,12/03/2022,Right angle,Forest/Maplewd/N-S Ridgewd/S Valley/Valley/Walton × W 3Rd St,I-2022-025773
+40.74485,-74.259449,pdo,2022,12/03/2022,Sideswipe (same dir),Valley St / Scotland Rd (CR 638) × 1St St,I-2022-025777
+40.744859,-74.259441,pdo,2022,12/05/2022,Struck parked vehicle,Valley St / Scotland Rd (CR 638) × 1St St,I-2022-025908
+40.745688,-74.257561,pdo,2022,12/06/2022,Rear-end,South Orange Ave (CR 510) × Cr 638 / Scotland Rd / Valley St,I-2022-025996
+40.742169,-74.254399,pdo,2022,12/06/2022,Rear-end,Irvington Ave (CR 665) × Tichenor Ave,I-2022-026010
+40.746707,-74.261001,pdo,2022,12/07/2022,Rear-end,South Orange Ave (CR 510) × Sloan St,I-2022-026051
+40.747468,-74.273716,pdo,2022,12/07/2022,Sideswipe (same dir),South Orange Ave (CR 510) × Route 577 / S Wyoming Ave,I-2022-026090
+40.747471,-74.273722,pdo,2022,12/07/2022,Rear-end,South Orange Ave (CR 510) × Route 577 / S Wyoming Ave,I-2022-026095
+40.740442,-74.261232,pdo,2022,12/09/2022,Sideswipe (same dir),Academy St × 5Th St,I-2022-026252
+40.751728,-74.268516,injury,2022,12/15/2022,Right angle,CR 577 (Prospect/Wyoming) × Tillou Rd,I-2022-026876
+40.747525,-74.263534,pdo,2022,12/16/2022,Head-on,South Orange Ave (CR 510) × N Ridgewood Rd / S Ridgewood Rd,I-2022-026985
+40.744926,-74.251633,pdo,2022,12/17/2022,Sideswipe (same dir),South Orange Ave (CR 510) × Riggs Pl,I-2022-027053
+40.739061,-74.264684,pdo,2022,12/19/2022,Struck parked vehicle,Valley St / Scotland Rd (CR 638) × Roland Ave,I-2022-027280
+40.742893,-74.257288,pdo,2022,12/19/2022,Right angle,Second St × Prospect St,I-2022-027290
+40.739798,-74.257615,pdo,2022,12/19/2022,Right angle,Montague Pl × Tiechnor Ave,I-2022-027302
+40.744689,-74.256593,pdo,2022,12/21/2022,Sideswipe (same dir),Irvington Ave (CR 665) × Prospect St,I-2022-027463
+40.746261,-74.259352,pdo,2022,12/21/2022,Struck parked vehicle,South Orange Ave (CR 510) × Vose Ave,I-2022-027468
+40.747882,-74.256045,vru,2022,12/27/2022,Pedestrian,Valley St / Scotland Rd (CR 638) × Ralston Ave,I-2022-027492
+40.750859,-74.261483,pdo,2022,12/22/2022,Right angle,Highland Rd / Mead St ** × N Ridgewood Rd,I-2022-027537
+40.742007,-74.254254,pdo,2022,12/22/2022,Rear-end,Irvington Ave (CR 665) × Tichenor Ave,I-2022-027541
+40.741838,-74.258152,pdo,2022,12/25/2022,Fixed object,Prospect St × Village Rd,I-2022-027781
+40.745232,-74.244446,pdo,2022,12/26/2022,Sideswipe (same dir),South Orange Ave (CR 510) × Warren Ct,I-2022-027856
+40.745486,-74.256901,pdo,2022,12/27/2022,Struck parked vehicle,South Orange Ave (CR 510) × Academy St,I-2022-027951
+40.743445,-74.2608,pdo,2022,12/28/2022,Sideswipe (same dir),Valley St / Scotland Rd (CR 638) × 3Rd St,I-2022-028048
+40.745392,-74.252328,pdo,2022,12/30/2022,Struck parked vehicle,Grove Rd ** × Route 510 / South Orange Ave,I-2022-028204
+40.747084,-74.262192,vru,2022,12/31/2022,Pedestrian,South Orange Ave (CR 510) × Church St,I-2022-028294
+40.743682,-74.239458,pdo,2022,06/30/2022,Struck parked vehicle,Sinclair Ter ** × S Stanley Rd,I-2022-12339
+40.742903,-74.261422,pdo,2022,07/23/2022,Backing,Valley St / Scotland Rd (CR 638) × 4Th St,I-2022-14057
+40.738062,-74.256987,pdo,2022,07/29/2022,Struck parked vehicle,Richmond Ave ** × Coudert Pl,I-2022-14499
+40.747871,-74.271847,pdo,2022,08/23/2022,Right angle,South Orange Ave (CR 510) × Route 577 / N Wyoming Ave,I-2022-16355
+40.739983,-74.252701,pdo,2022,10/12/2022,Fixed object,Irvington Ave (CR 665) × Ward Pl,I-2022-20742
+40.745608,-74.257124,pdo,2022,10/17/2022,Sideswipe (same dir),South Orange Ave (CR 510) × Academy St,I-2022021304
+40.745243,-74.255259,pdo,2022,08/05/2022,Sideswipe (opp),Prospect St × Route 510 / S Orange Ave,i-2022-015059
+40.744354,-74.256119,pdo,2022,08/11/2022,Rear-end,Prospect St × Cr 665 / Irvington Ave,i-2022-015456
+40.740726,-74.261756,pdo,2022,08/18/2022,Backing,Fifth St ** × Academy St,i-2022-015970
+40.741252,-74.252038,pdo,2022,10/11/2022,Sideswipe (same dir),Irvington Ave (CR 665) × Ward Pl,i-2022-020645
+40.746255,-74.259292,pdo,2022,12/03/2022,Backing,South Orange Ave (CR 510) × Vose Ave,i-2022-025771
+40.756394,-74.26834,pdo,2023,01/05/2023,Head-on,Harding Dr × Redmond Rd,2023-000460
+40.747365,-74.26314,pdo,2023,01/06/2023,Sideswipe (same dir),South Orange Ave (CR 510) × N Ridgewood Rd / S Ridgewood Rd,C-2023-000053
+40.747229,-74.26258,pdo,2023,11/21/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Church St,E-2023-033552
+40.746691,-74.26091,pdo,2023,03/09/2023,Right angle,South Orange Ave (CR 510) × Sloan St,I-2003-006879
+40.7441,-74.26013,pdo,2023,01/03/2023,Sideswipe (same dir),Valley St / Scotland Rd (CR 638) × Second St,I-2023-000231
+40.748457,-74.24098,pdo,2023,01/03/2023,Right angle,Centre Street × Montrose Ave,I-2023-000235
+40.740996,-74.25877,pdo,2023,01/04/2023,Rear-end,Prospect St × Fourth St,I-2023-000327
+40.744855,-74.26116,pdo,2023,01/04/2023,Struck parked vehicle,Second St × Sloan St,I-2023-000361
+40.747864,-74.25607,pdo,2023,01/04/2023,Right angle,Scotland Road (Essex County 638) × Ralston Avenue,I-2023-000369
+40.744287,-74.25615,vru,2023,01/06/2023,Pedestrian,Prospect St × Irvington Ave (CR 665),I-2023-000532
+40.744186,-74.26002,pdo,2023,01/06/2023,Struck parked vehicle,Valley St / Scotland Rd (CR 638) × 2Nd St,I-2023-000582
+40.74612,-74.25913,pdo,2023,01/07/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Vose Avenue,I-2023-000683
+40.750483,-74.266,pdo,2023,01/09/2023,Struck parked vehicle,Tillou Road × Tillou Rd,I-2023-000842
+40.745567,-74.23755,injury,2023,01/13/2023,Rear-end,South Orange Ave (CR 510) × Holland Rd,I-2023-001199
+40.747411,-74.26737,pdo,2023,01/13/2023,Fixed object,Rynda Rd ** × Kingsland Ter,I-2023-001206
+40.747525,-74.2635,pdo,2023,01/13/2023,Rear-end,South Orange Ave (CR 510) × Maplewood Avenue,I-2023-001217
+40.738489,-74.26021,pdo,2023,01/13/2023,Sideswipe (opp),Prospect St × Garfield Pl,I-2023-001236
+40.761212,-74.26812,pdo,2023,01/16/2023,Backing,Blanchard Road,I-2023-001459
+40.755627,-74.25283,pdo,2023,01/16/2023,Fixed object,Montrose Ave × Meeker St,I-2023-001487
+40.754451,-74.25071,pdo,2023,01/16/2023,Right angle,Valley St / Scotland Rd (CR 638) × Montrose Ave,I-2023-001493
+40.755452,-74.26224,pdo,2023,01/16/2023,Sideswipe (same dir),Ravine Rd,I-2023-001496
+40.740005,-74.2488,pdo,2023,01/16/2023,Fixed object,W. Allen St × Eden Ter,i-2023-001521
+40.74245,-74.26161,pdo,2023,01/17/2023,Sideswipe (same dir),Valley St / Scotland Rd (CR 638) × Fourth St,I-2023-001603
+40.746066,-74.25897,pdo,2023,01/17/2023,Struck parked vehicle,South Orange Ave (CR 510) × Vose Avenue,I-2023-001631
+40.74623,-74.25916,pdo,2023,01/18/2023,Struck parked vehicle,Vose La × South Orange Ave (CR 510),I-2023-001694
+40.745802,-74.24311,pdo,2023,01/18/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Turrell Ave,I-2023-001766
+40.743485,-74.26046,pdo,2023,01/20/2023,Backing,Third St × Valley St / Scotland Rd (CR 638),I-2023-001927
+40.745935,-74.25785,vru,2023,01/20/2023,Pedestrian,Valley St / Scotland Rd (CR 638) × South Orange Ave (CR 510),I-2023-001933
+40.755226,-74.25197,pdo,2023,01/21/2023,Right angle,Montrose Ave × Vose La,I-2023-001980
+40.743554,-74.2606,pdo,2023,01/22/2023,Right angle,Valley St / Scotland Rd (CR 638) × Third St,I-2023-002064
+40.745246,-74.25716,pdo,2023,01/23/2023,Right angle,Irvington Ave (CR 665) × Academy Street,I-2023-002086
+40.747165,-74.27532,pdo,2023,01/23/2023,Rear-end,South Orange Ave (CR 510) × West End Road,I-2023-002107
+40.749529,-74.25515,pdo,2023,01/23/2023,Right angle,Valley St / Scotland Rd (CR 638) × Raymond Ave,I-2023-002155
+40.739451,-74.25705,pdo,2023,01/25/2023,Backing,Montague Pl × Tiechnor Ave,I-2023-002413
+40.744969,-74.25929,vru,2023,01/26/2023,Pedalcyclist,First St,I-2023-002495
+40.753839,-74.26061,pdo,2023,01/27/2023,Rear-end,Maplewood Avenue × Ravine Rd,I-2023-002606
+40.741518,-74.26903,pdo,2023,01/27/2023,Right angle,Lenox Ave × Maplewood Avenue,I-2023-002619
+40.747002,-74.276,pdo,2023,01/28/2023,Animal,South Orange Ave (CR 510) × Lenox Ave,I-2023-002735
+40.747449,-74.26356,pdo,2023,01/28/2023,Head-on,Maplewood Avenue × South Orange Ave (CR 510),I-2023-002736
+40.748613,-74.2573,pdo,2023,01/31/2023,Struck parked vehicle,Vose Ln ** × Ralston Ave,I-2023-002920
+40.744729,-74.26097,pdo,2023,02/01/2023,Struck parked vehicle,Second St × Sloan St,I-2023-003026
+40.746924,-74.27442,pdo,2023,02/01/2023,Struck parked vehicle,West End Rd × CR 577 (Prospect/Wyoming),I-2023-003058
+40.73921,-74.26447,pdo,2023,02/03/2023,Backing,Roland Ave × Valley St / Scotland Rd (CR 638),I-2023-00336
+40.747526,-74.2635,injury,2023,02/04/2023,Left turn / U-turn,South Orange Ave (CR 510) × Maplewood Avenue,I-2023-003459
+40.742131,-74.2544,pdo,2023,02/05/2023,Rear-end,Irvington Ave (CR 665) × Tiechnor Ave,I-2023-003533
+40.742039,-74.25427,pdo,2023,02/05/2023,Left turn / U-turn,Irvington Ave (CR 665) × Tiechnor Ave,I-2023-003544
+40.744022,-74.2404,pdo,2023,02/06/2023,Non-fixed object,Sinclair Ter × S. Kingman Rd,I-2023-003639
+40.744871,-74.2509,injury,2023,02/06/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Park Pl,I-2023-003660
+40.743363,-74.24496,pdo,2023,02/07/2023,Struck parked vehicle,South Centre Street (Parking Lot),I-2023-003786
+40.744929,-74.25155,pdo,2023,02/08/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Tiechnor Ave,I-2023-003875
+40.738469,-74.25203,pdo,2023,02/08/2023,Sideswipe (same dir),Irvington Ave (CR 665) × Seton Pl,I-2023-003889
+40.746279,-74.26118,pdo,2023,02/09/2023,Struck parked vehicle,2 Trenchard Pl,I-2023-003991
+40.742172,-74.25784,pdo,2023,02/13/2023,Right angle,Prospect Street × Third Street,I-2023-004433
+40.747855,-74.27194,injury,2023,02/14/2023,Rear-end,South Orange Ave (CR 510) × CR 577 (Prospect/Wyoming),I-2023-004529
+40.745204,-74.2544,pdo,2023,02/14/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Prospect St,I-2023-004530
+40.745072,-74.2461,pdo,2023,02/16/2023,Struck parked vehicle,Elm Ct × South Orange Ave (CR 510),I-2023-004712
+40.747528,-74.2635,pdo,2023,02/16/2023,Right angle,South Orange Ave (CR 510) × Maplewood Avenue,I-2023-004715
+40.745013,-74.25254,pdo,2023,02/17/2023,Right angle,South Orange Ave (CR 510) × Grove Rd,I-2023-004802
+40.747345,-74.25781,pdo,2023,02/18/2023,Backing,Comstock Pl ** × Vose Ave,I-2023-005084
+40.746098,-74.28133,injury,2023,02/20/2023,Right angle,Route 510 Secondary × Spier Dr,I-2023-005117
+40.748461,-74.24097,pdo,2023,02/21/2023,Right angle,Montrose Ave × Centre Street,I-2023-005216
+40.73848,-74.25204,pdo,2023,02/22/2023,Sideswipe (same dir),Irvington Ave (CR 665) × Seton Pl,I-2023-005268
+40.742771,-74.26131,pdo,2023,02/22/2023,Sideswipe (same dir),Valley St / Scotland Rd (CR 638) × Fourth St,I-2023-005321
+40.739792,-74.24852,pdo,2023,02/22/2023,Struck parked vehicle,W. Allen St × Eden Ter,I-2023-005323
+40.744005,-74.26674,injury,2023,02/23/2023,Backing,Forest/Maplewd/N-S Ridgewd/S Valley/Valley/Walton × Edgewood Ter,I-2023-005391
+40.744157,-74.2734,pdo,2023,02/24/2023,Fixed object,Thornden St × Lenox Ave,I-2023-005507
+40.754481,-74.26666,pdo,2023,02/24/2023,Right angle,CR 577 (Prospect/Wyoming) × Redmond Rd,I-2023-005508
+40.746754,-74.26112,pdo,2023,02/24/2023,Struck parked vehicle,South Orange Ave (CR 510) × Sloan St,I-2023-005513
+40.747399,-74.27414,injury,2023,02/26/2023,Fixed object,South Orange Ave (CR 510) × Mayhew Dr,I-2023-005736
+40.745835,-74.26503,injury,2023,02/27/2023,Right angle,Third St × S Ridgedale Rd,I-2023-005792
+40.749984,-74.25483,pdo,2023,03/02/2023,Sideswipe (same dir),Valley St / Scotland Rd (CR 638) × Raymond Ave,I-2023-006080
+40.746024,-74.26012,pdo,2023,03/02/2023,Backing,Sloan St × South Orange Ave (CR 510),I-2023-006122
+40.747429,-74.27378,pdo,2023,03/03/2023,Sideswipe (same dir),South Orange Ave (CR 510) × CR 577 (Prospect/Wyoming),I-2023-006218
+40.745024,-74.26638,pdo,2023,03/02/2023,Fixed object,Ridgewood Rd / S Ridgewood Rd × Kingsland Ter,I-2023-006219
+40.74592,-74.25852,pdo,2023,03/03/2023,Backing,South Orange Ave (CR 510) × Village Plaza (Essex County 638 Spu,I-2023-006240
+40.75311,-74.24376,pdo,2023,03/04/2023,Fixed object,Warwick Ave × Sylvan Way,I-2023-006292
+40.752596,-74.25219,pdo,2023,03/03/2023,Sideswipe (same dir),Valley St / Scotland Rd (CR 638) × Harrison Ct,I-2023-006425
+40.747808,-74.26441,injury,2023,03/06/2023,Rear-end,South Orange Ave (CR 510) × Maplewood Avenue,I-2023-006494
+40.743436,-74.26036,pdo,2023,03/07/2023,Struck parked vehicle,Third St × Valley St / Scotland Rd (CR 638),I-2023-006648
+40.748741,-74.27127,pdo,2023,03/07/2023,Sideswipe (same dir),CR 577 (Prospect/Wyoming) × Overhill Rd,i-2023-006669
+40.745965,-74.25866,vru,2023,03/09/2023,Pedestrian,South Orange Ave (CR 510) × Essex County 638 S,I-2023-006892
+40.740568,-74.25299,pdo,2023,03/10/2023,Sideswipe (same dir),Irvington Ave (CR 665) × Radel Ter,I-2023-006977
+40.746584,-74.26434,pdo,2023,03/12/2023,Struck parked vehicle,Maplewood Avenue × Conway Ct,I-2023-007122
+40.742802,-74.26781,pdo,2023,03/13/2023,Struck parked vehicle,Forest/Maplewd/N-S Ridgewd/S Valley/Valley/Walton × Thornden St,I-2023-007186
+40.747585,-74.26377,pdo,2023,03/13/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Maplewood Avenue,I-2023-007220
+40.744088,-74.25787,pdo,2023,03/15/2023,Sideswipe (same dir),Milligan Place × Academy Street,I-2023-007452
+40.747234,-74.2749,pdo,2023,03/16/2023,Animal,South Orange Ave (CR 510) × West End Road,I-2023-007518
+40.747674,-74.24915,pdo,2023,03/16/2023,Struck parked vehicle,Raymond Ave × Marshall Ct,I-2023-007576
+40.74625,-74.24229,pdo,2023,03/17/2023,Rear-end,Centre Street × South Orange Ave (CR 510),I-2023-007693
+40.748085,-74.27074,injury,2023,03/17/2023,Right angle,South Orange Ave (CR 510) × Cumberland Rd,I-2023-007696
+40.745513,-74.26535,injury,2023,03/17/2023,Struck parked vehicle,Maplewood Avenue × Third St,I-2023-007698
+40.738246,-74.26437,pdo,2023,03/17/2023,Sideswipe (same dir),Arnold Ter × Valley St / Scotland Rd (CR 638),I-2023-007701
+40.746229,-74.2576,pdo,2023,03/17/2023,Rear-end,Valley St / Scotland Rd (CR 638) × Taylor Pl,I-2023-007710
+40.748576,-74.26681,pdo,2023,03/17/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Rynda Rd,I-2023-007715
+40.74951,-74.24033,injury,2023,03/19/2023,Right angle,Centre Street × Hartford Ct,I-2023-007739
+40.747473,-74.27376,pdo,2023,03/18/2023,Right angle,South Orange Ave (CR 510) × CR 577 (Prospect/Wyoming),I-2023-007755
+40.740532,-74.25621,pdo,2023,03/19/2023,Struck parked vehicle,Village Rd × Tiechnor Ave,I-2023-007893
+40.746179,-74.26126,pdo,2023,03/20/2023,Fixed object,1 Trenchard Place,I-2023-007940
+40.74107,-74.25579,pdo,2023,03/20/2023,Backing,Tiechnor Ave × Village Rd,I-2023-007945
+40.754536,-74.25086,pdo,2023,03/20/2023,Backing,Montrose Ave × Valley St / Scotland Rd (CR 638),I-2023-007950
+40.740453,-74.26123,injury,2023,03/22/2023,Right angle,Fifth St × Academy Street,I-2023-008207
+40.738204,-74.25675,pdo,2023,03/23/2023,Struck parked vehicle,Richmond Ave ** × Coudert Pl,I-2023-008348
+40.745044,-74.26349,pdo,2023,03/23/2023,Left turn / U-turn,Third St × Church St,I-2023-008353
+40.743272,-74.26001,pdo,2023,03/24/2023,Struck parked vehicle,Third St × Valley St / Scotland Rd (CR 638),I-2023-008446
+40.744837,-74.2503,injury,2023,03/25/2023,Struck parked vehicle,South Orange Ave (CR 510) × Fairview Avenue,I-2023-008556
+40.745573,-74.26043,pdo,2023,03/25/2023,Sideswipe (same dir),Sloan Street × First Street,I-2023-008557
+40.746677,-74.26426,pdo,2023,03/26/2023,Struck parked vehicle,South Ridgewood Road × Conway Court,I-2023-008658
+40.744901,-74.25045,injury,2023,03/28/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Park Place,I-2023-008824
+40.744033,-74.25636,pdo,2023,03/29/2023,Struck parked vehicle,Prospect St × Cr 665 / Irvington Ave,I-2023-008919
+40.745921,-74.2419,pdo,2023,03/29/2023,Rear-end,South Orange Ave (CR 510) × Centre Street,I-2023-008959
+40.748459,-74.241,pdo,2023,03/30/2023,Encroachment,Centre/N Harrison/S Center/S Harrison/Washington × Hamilton Rd,I-2023-009054
+40.745268,-74.25511,pdo,2023,03/31/2023,Sideswipe (same dir),South Orange Avenue × Prospect St,I-2023-009214
+40.744712,-74.2487,injury,2023,04/01/2023,Sideswipe (same dir),South Orange Ave (CR 510) × University Ct / Ward Pl,I-2023-009251
+40.748961,-74.27104,injury,2023,04/05/2023,Rear-end,CR 577 (Prospect/Wyoming) × Overhill Rd,I-2023-009670
+40.746729,-74.26107,vru,2023,04/06/2023,Pedestrian,South Orange Ave (CR 510) × Sloan Street,I-2023-009807
+40.739833,-74.25752,pdo,2023,04/10/2023,Backing,Tiechnor Ave ** × Montague Pl,I-2023--010153
+40.749519,-74.25512,pdo,2023,04/11/2023,Right angle,Raymond Avenue × Scotland Road (Essex County 638),I-2023-010260
+40.744498,-74.25974,pdo,2023,04/12/2023,Struck parked vehicle,Valley St / Scotland Rd (CR 638) × 2Nd St,I-2023-010336
+40.754104,-74.25638,pdo,2023,04/12/2023,Struck parked vehicle,Valley Street × Mountain House Road,I-2023-010351
+40.740284,-74.25285,pdo,2023,04/12/2023,Rear-end,Irvington Avenue (Essex County 665) × Ward Place,I-2023-010385
+40.737553,-74.26338,pdo,2023,04/13/2023,Sideswipe (same dir),Academy St × Prospect Pl,I-2023-010495
+40.7459,-74.24174,pdo,2023,04/13/2023,Backing,South Orange Ave (CR 510) × South Centre Street,I-2023-010496
+40.745128,-74.25376,pdo,2023,04/14/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Cottage Street,I-2023-010567
+40.747811,-74.27208,pdo,2023,04/14/2023,Rear-end,South Orange Ave (CR 510) × N Wyoming Ave (CR 577),I-2023-010575
+40.755633,-74.25384,injury,2023,04/14/2023,Struck parked vehicle,East Clark Cir × Montrose Avenue,I-2023-010579
+40.741607,-74.26195,pdo,2023,04/14/2023,Struck parked vehicle,Massel Ter ** × Cr 638 / Valley Rd,I-2023-010582
+40.744794,-74.25001,pdo,2023,04/14/2023,Right angle,South Orange Ave (CR 510) × Fairview Avenue,I-2023-010583
+40.747213,-74.26168,pdo,2023,04/14/2023,Struck parked vehicle,South Orange Ave (CR 510) × Church St,I-2023-010600
+40.748555,-74.25573,pdo,2023,04/15/2023,Fixed object,Valley St / Scotland Rd (CR 638) × Ralston Ave,I-2023-010677
+40.744945,-74.25145,pdo,2023,04/16/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Tiechnor Ave,I-2023-010777
+40.743406,-74.2555,pdo,2023,04/18/2023,Struck parked vehicle,Irvington Ave (CR 665) × Cottage St,I-2023-010954
+40.745315,-74.25554,pdo,2023,04/21/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Prospect St,I-2023-011283
+40.756566,-74.27181,pdo,2023,04/21/2023,Struck parked vehicle,Longview Rd ** × Crestwood Dr,I-2023-011288
+40.748356,-74.27154,pdo,2023,04/24/2023,Sideswipe (same dir),CR 577 (Prospect/Wyoming) × West End Rd,I-2023-011540
+40.746845,-74.27675,injury,2023,04/26/2023,Right angle,South Orange Ave (CR 510) × Harding Drive,I-2023-011813
+40.743551,-74.2606,pdo,2023,04/26/2023,Right angle,Valley St / Scotland Rd (CR 638) × Third St,I-2023-011821
+40.745011,-74.25254,pdo,2023,04/27/2023,Right angle,South Orange Ave (CR 510) × Grove Rd,I-2023-011908
+40.748149,-74.24116,pdo,2023,04/27/2023,Rear-end,Centre Street × Montrose Ave,I-2023-011919
+40.744666,-74.24841,pdo,2023,04/28/2023,Right angle,South Orange Ave (CR 510) × Radel Ter,I-2023-011978
+40.74683,-74.26415,injury,2023,04/28/2023,Rear-end,Forest/Maplewd/N-S Ridgewd/S Valley/Valley/Walton × Conway Ct,I-2023-011989
+40.74327,-74.27049,pdo,2023,04/29/2023,Fixed object,Ridgewood Road × Thornden St,I-2023-012028
+40.746088,-74.26007,pdo,2023,04/29/2023,Backing,Sloan St × South Orange Ave (CR 510),I-2023-012058
+40.746023,-74.25883,pdo,2023,05/01/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Cr 638 / Scotland Rd / Valley St,I-2023-012203
+40.751767,-74.26845,pdo,2023,05/03/2023,Rear-end,CR 577 (Prospect/Wyoming) × Tillou Road,I-2023-012448
+40.743616,-74.26055,pdo,2023,05/03/2023,Sideswipe (same dir),Valley St / Scotland Rd (CR 638) × Third St,I-2023-012488
+40.746766,-74.27715,pdo,2023,05/04/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Stonehill Rd,I-2023-012575
+40.751092,-74.25141,pdo,2023,05/04/2023,Struck parked vehicle,Irving Ave × Charlton Ave,I-2023-012627
+40.748709,-74.26751,pdo,2023,05/04/2023,Fixed object,South Orange Ave (CR 510) × Briar Ct,I-2023-012634
+40.745586,-74.26032,pdo,2023,05/05/2023,Sideswipe (same dir),Sloan St × First St,I-2023-012733
+40.746034,-74.25774,pdo,2023,05/06/2023,Sideswipe (same dir),Scotland Road (Essex County 638) × South Orange Ave (CR 510),I-2023-012784
+40.738565,-74.25209,injury,2023,05/06/2023,Fixed object,Irvington Ave (CR 665) × Seton Pl,I-2023-012794
+40.745499,-74.25692,injury,2023,05/07/2023,Right angle,South Orange Ave (CR 510) × Academy Street,I-2023-012831
+40.747829,-74.27205,pdo,2023,05/08/2023,Rear-end,South Orange Ave (CR 510) × CR 577 (Prospect/Wyoming),I-2023-012929
+40.745942,-74.24259,pdo,2023,05/08/2023,Rear-end,South Orange Ave (CR 510) × Turrell Ave,I-2023-012938
+40.746357,-74.25906,pdo,2023,05/08/2023,Sideswipe (same dir),Vose Avenue × South Orange Ave (CR 510),I-2023-012961
+40.744687,-74.24837,injury,2023,05/08/2023,Right angle,South Orange Ave (CR 510) × University Court,I-2023-012967
+40.744982,-74.25931,pdo,2023,05/08/2023,Rear-end,First Street,I-2023-012968
+40.743555,-74.2606,injury,2023,05/09/2023,Head-on,Third Street × Valley Street (Essex County 638),I-2023-013015
+40.744798,-74.25949,pdo,2023,05/10/2023,Struck parked vehicle,Valley St / Scotland Rd (CR 638) × 1St St,I-2023-013095
+40.738254,-74.25516,vru,2023,05/11/2023,Pedestrian,University Ct / Ward Pl ** × Montague Pl,I-2023-013176
+40.746228,-74.2595,pdo,2023,05/11/2023,Struck parked vehicle,South Orange Ave (CR 510) × Vose Ave,I-2023-013181
+40.755701,-74.27819,pdo,2023,05/11/2023,Fixed object,Glenview Rd ** × Hoskier Rd,I-2023-013196
+40.742903,-74.24792,pdo,2023,05/12/2023,Struck parked vehicle,South Orange Avenue,I-2023-013266
+40.751786,-74.23862,injury,2023,05/12/2023,Rear-end,Finley Place × Centre Street,I-2023-013310
+40.745831,-74.27513,pdo,2023,05/12/2023,Right angle,Rt 577 (Wyoming Avenue) × Lenox Avenue,I-2023-013318
+40.745293,-74.26002,pdo,2023,05/12/2023,Backing,First Street × Sloan Street,I-2023-013319
+40.748058,-74.27179,pdo,2023,05/12/2023,Fixed object,CR 577 (Prospect/Wyoming) × West End Rd,I-2023-013320
+40.744619,-74.25584,pdo,2023,05/13/2023,Rear-end,Prospect St × Irvington Ave (CR 665),I-2023-013365
+40.738676,-74.26027,pdo,2023,05/13/2023,Fixed object,Prospect St × Garfield Pl,I-2023-013384
+40.743573,-74.25866,pdo,2023,05/15/2023,Right angle,Second St × Academy Street,I-2023-013527
+40.738178,-74.26419,pdo,2023,05/15/2023,Sideswipe (same dir),Arnold Ter × Valley St / Scotland Rd (CR 638),I-2023-013532
+40.746961,-74.26177,pdo,2023,05/17/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Church St,I-2023-013752
+40.749636,-74.23612,pdo,2023,05/17/2023,Fixed object,Holland Rd × Kenmore Ave,I-2023-013833
+40.747035,-74.27657,injury,2023,05/19/2023,Rear-end,Harding Dr × South Orange Ave (CR 510),I-2023-014019
+40.740529,-74.25337,pdo,2023,05/19/2023,Struck parked vehicle,Irvington Ave × Parking Lot,I-2023-014047
+40.748703,-74.26756,injury,2023,05/20/2023,Fixed object,South Orange Ave (CR 510) × Briar Court,I-2023-014089
+40.74607,-74.25899,pdo,2023,05/21/2023,Struck parked vehicle,South Orange Ave (CR 510) × Vose Avenue,I-2023-014197
+40.745183,-74.26057,pdo,2023,05/21/2023,Backing,Sloan St,I-2023-014218
+40.740363,-74.25277,injury,2023,05/23/2023,Rear-end,Ward Place × Irvington Avenue (Essex County 665),I-2023-014349
+40.741165,-74.25559,pdo,2023,05/24/2023,Struck parked vehicle,Riggs Place × Village Road,I-2023-014481
+40.745408,-74.25628,pdo,2023,05/27/2023,Rear-end,South Orange Ave (CR 510) × Academy Street,I-2023-014881
+40.749045,-74.25696,pdo,2023,05/31/2023,Head-on,Vose La × Mead St,I-2023-015281
+40.747805,-74.27415,pdo,2023,06/01/2023,Sideswipe (opp),Mayhew Drive × South Orange Ave (CR 510),I-2023-015366
+40.738184,-74.26,pdo,2023,06/04/2023,Fixed object,Garfield Pl × Prospect St,I-2023-015639
+40.758195,-74.25738,injury,2023,06/06/2023,Fixed object,Maplewood Avenue × Walnut Ct,I2023-015817
+40.740776,-74.26309,injury,2023,06/06/2023,Rear-end,Valley St / Scotland Rd (CR 638) × Lackawanna Pl,I-2023-015855
+40.739919,-74.2527,injury,2023,06/07/2023,Fixed object,Irvington Avenue (Essex County 665) × Ward Place,I-2023-015920
+40.743479,-74.2605,pdo,2023,06/07/2023,Struck parked vehicle,Third Street × Valley Street (Essex County 638),I-2023-015962
+40.741812,-74.25811,injury,2023,06/08/2023,Head-on,Village Road × Prospect Street,I-2023-016062
+40.743434,-74.26043,pdo,2023,06/11/2023,Backing,Third Street × Valley Street (Essex County 638),I-2023-016417
+40.745463,-74.25667,pdo,2023,06/12/2023,Struck parked vehicle,South Orange Ave (CR 510) × Academy Street,I-2023-016492
+40.745606,-74.2374,pdo,2023,06/12/2023,Rear-end,South Orange Ave (CR 510) × Holland Road,I-2023-016540
+40.752687,-74.25207,pdo,2023,06/13/2023,Left turn / U-turn,Stewart Place × Scotland Road (Essex County 638),I-2023-016577
+40.744205,-74.25621,injury,2023,06/15/2023,Rear-end,Irvington Avenue (Essex County 665) × Prospect Street,I-2023-016831
+40.745009,-74.25245,pdo,2023,06/16/2023,Right angle,South Orange Ave (CR 510) × Grove Road,I-2023-016882
+40.744154,-74.26177,pdo,2023,06/16/2023,Right angle,Third Street × Sloan Street,I-2023-016916
+40.747522,-74.26354,pdo,2023,06/16/2023,Sideswipe (opp),South Orange Ave (CR 510) × South Ridgewood Rd,I-2023-016920
+40.747527,-74.2635,pdo,2023,06/16/2023,Right angle,South Orange Ave (CR 510) × South Ridgewood Road,I-2023-016943
+40.747917,-74.26474,pdo,2023,06/16/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Conway Court,I-2023-016944
+40.749181,-74.25689,pdo,2023,06/19/2023,Right angle,Mead St × Vose Av,I-2023-017259
+40.744182,-74.2489,pdo,2023,06/21/2023,Rear-end,University Court × South Orange Ave (CR 510),I-2023-017470
+40.754677,-74.25111,pdo,2023,06/23/2023,Struck parked vehicle,Montrose Avenue × Scotland Road (Essex County 638),I-2023-017619
+40.749978,-74.25622,pdo,2023,06/23/2023,Non-fixed object,Raymond Avenue × Vose Avenue,I-2023-017633
+40.740496,-74.26118,pdo,2023,06/23/2023,Struck parked vehicle,Academy Street × Fifth Street,I-2023-017647
+40.751725,-74.26835,pdo,2023,06/24/2023,Fixed object,Tillou Road × N Wyoming Ave (CR 577),I-2023-017693
+40.743575,-74.25867,pdo,2023,06/24/2023,Right angle,Second Street × Academy Street,I-2023-017694
+40.751765,-74.26845,pdo,2023,06/25/2023,Right angle,Tillou Road × N Wyoming Ave (CR 577),I-2023-017771
+40.745333,-74.25568,pdo,2023,06/26/2023,Struck parked vehicle,South Orange Ave (CR 510) × Prospect Street,I-2023-017919
+40.745246,-74.25715,injury,2023,06/27/2023,Right angle,Academy Street × Irvington Avenue (Essex County 665),I-2023-017995
+40.748457,-74.24098,pdo,2023,06/28/2023,Right angle,Montrose Avenue × Centre Street,I-2023-018121
+40.74677,-74.25704,pdo,2023,06/28/2023,Fixed object,Scotland Road (Essex County 638) × Connett Place,I-2023-018125
+40.745935,-74.26018,pdo,2023,06/29/2023,Backing,Sloan Street × First Street,I-2023-018256
+40.745384,-74.26414,pdo,2023,06/29/2023,Rear-end,Third St × Church St,I-2023-018263
+40.742048,-74.25427,pdo,2023,06/30/2023,Right angle,Irvington Ave (CR 665) × Tiechnor Ave,I-2023-018337
+40.745461,-74.25664,pdo,2023,06/30/2023,Backing,South Orange Ave (CR 510) × Academy Street,I-2023-018373
+40.746047,-74.26008,pdo,2023,07/01/2023,Backing,Sloan St × South Orange Ave (CR 510),I-2023-018377
+40.744757,-74.24958,pdo,2023,07/01/2023,Left turn / U-turn,South Orange Ave (CR 510) × Fielding Ct,I-2023-018435
+40.745407,-74.25731,pdo,2023,07/04/2023,Rear-end,Irvington Ave (CR 665) × Academy Street,I-2023-018750
+40.747313,-74.26291,pdo,2023,07/07/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Church St,I-2023-019080
+40.743715,-74.26046,injury,2023,07/08/2023,Struck parked vehicle,Valley Street (Essex County 638) × Third Street,I-2023-019183
+40.744756,-74.24958,injury,2023,07/11/2023,Head-on,South Orange Ave (CR 510) × Fielding Court,I-2023-019415
+40.747667,-74.2489,injury,2023,07/11/2023,Sideswipe (opp),Raymond Avenue × Park Place,I-2023-019418
+40.751429,-74.26789,pdo,2023,07/12/2023,Struck parked vehicle,Tillou Rd ** × Route 577 / Wyoming Ave,I-2023-019516
+40.750965,-74.26123,pdo,2023,07/12/2023,Struck parked vehicle,North Ridgewood Road × Highland Road,I-2023-019537
+40.748706,-74.26265,injury,2023,07/14/2023,Struck parked vehicle,North Ridgewood Road × Tillou Road,I-2023-019741
+40.752378,-74.25251,pdo,2023,07/14/2023,Rear-end,Scotland Road (Essex County 638) × Harrison Court,I-2023-019745
+40.743288,-74.26011,pdo,2023,07/16/2023,Struck parked vehicle,Third Street × Valley Street (Essex County 638),I-2023-019915
+40.744767,-74.25672,pdo,2023,07/17/2023,Head-on,Irvington Ave (CR 665) × Academy Street,I-2023-020041
+40.745414,-74.24403,vru,2023,07/18/2023,Pedalcyclist,South Orange Ave (CR 510) × Warren Court,I-2023-020069
+40.747403,-74.27436,pdo,2023,07/18/2023,Rear-end,Mayhew Drive × South Orange Ave (CR 510),I-2023-020073
+40.740782,-74.26098,pdo,2023,07/18/2023,Struck parked vehicle,Academy St × Massell Ter,I-2023-020077
+40.744665,-74.24841,pdo,2023,07/19/2023,Left turn / U-turn,South Orange Ave (CR 510) × University Court,I-2023-020198
+40.740443,-74.25848,injury,2023,07/21/2023,Struck parked vehicle,South Fourth Street × Prospect Street,I-2023-020380
+40.758285,-74.25733,injury,2023,07/21/2023,Left turn / U-turn,North Ridgewood Road × Walnut Court,I-2023-020444
+40.741996,-74.2543,pdo,2023,07/22/2023,Rear-end,Riggs Place × Irvington Avenue (Essex County 665),I-2023-020528
+40.746036,-74.2589,pdo,2023,07/23/2023,Rear-end,South Orange Ave (CR 510) × Vose La,I-2023-020602
+40.746319,-74.26114,pdo,2023,07/23/2023,Struck parked vehicle,Sopac Way × South Orange Ave (CR 510),I-2023-020632
+40.747697,-74.26399,injury,2023,07/24/2023,Rear-end,South Orange Ave (CR 510) × N Ridgewood Rd / S Ridgewood Rd,I-2023-020702
+40.751054,-74.2612,pdo,2023,07/25/2023,Rear-end,North Ridgewood Road × Highland Road,I-2023-020795
+40.742404,-74.26175,pdo,2023,07/26/2023,Backing,Valley Street (Essex County 638) × Fourth Street,I-2023-020903
+40.747556,-74.26362,pdo,2023,07/27/2023,Sideswipe (same dir),South Orange Ave (CR 510) × South Ridgewood Road,i-2023-021022
+40.748262,-74.26308,pdo,2023,07/29/2023,Rear-end,Tillou Road × North Ridgewood Road,I-2023-021234
+40.744562,-74.26294,pdo,2023,07/30/2023,Backing,Third St × Sloan St,I-2023-021332
+40.756278,-74.25658,pdo,2023,07/31/2023,Fixed object,Meadowbrook Lane × Mountain House Road,I-2023-021445
+40.747171,-74.2566,injury,2023,08/01/2023,Fixed object,Scotland Road (Essex County 638) × Comstock Place,I-2023-021549
+40.7484,-74.25579,vru,2023,08/02/2023,Pedestrian,Scotland Road × Ralston Ave,I-2023-021583
+40.740011,-74.24995,pdo,2023,08/02/2023,Fixed object,Seton Place × Wilden Place,I-2023-021608
+40.746369,-74.25904,pdo,2023,08/03/2023,Fixed object,Vose Avenue × South Orange Ave (CR 510),I-2023-021714
+40.746067,-74.25898,pdo,2023,08/03/2023,Rear-end,South Orange Ave (CR 510) × Vose Avenue,I-2023-021758
+40.740419,-74.26336,pdo,2023,08/04/2023,Right angle,Valley St / Scotland Rd (CR 638) × Lackawanna Pl,I-2023-021789
+40.758033,-74.25752,injury,2023,08/05/2023,Head-on,Maplewood Avenue × Montrose Ave,I-2023-021886
+40.748636,-74.2681,pdo,2023,08/06/2023,Animal,South Orange Ave (CR 510) × Briar Court,I-2023-021964
+40.744918,-74.25144,pdo,2023,08/06/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Riggs Place,I-2023-022011
+40.744976,-74.25931,vru,2023,08/08/2023,Pedestrian,Valley St / Scotland Rd (CR 638) × First St,I-2023-022208
+40.745945,-74.24254,pdo,2023,08/08/2023,Rear-end,South Orange Ave (CR 510) × Turrell Avenue,I-2023-022219
+40.744851,-74.25941,pdo,2023,08/09/2023,Sideswipe (same dir),Valley Street (Essex County 638) × First Street,I-2023-022286
+40.756675,-74.25454,pdo,2023,08/09/2023,Right angle,Clark Street × Montrose Avenue,I-2023-022298
+40.746307,-74.25908,pdo,2023,08/10/2023,Struck parked vehicle,Vose Avenue × South Orange Ave (CR 510),I-2023-022371
+40.744748,-74.25951,pdo,2023,08/11/2023,Struck parked vehicle,Valley Street (Essex County 638) × First Street,I-2023-022452
+40.738211,-74.25517,injury,2023,08/14/2023,Right angle,Ward Place × South Fourth Street,I-2023-022719
+40.75449,-74.25079,pdo,2023,08/14/2023,Rear-end,Montrose Avenue × Scotland Road (Essex County 638),I-2023-022724
+40.746791,-74.27417,pdo,2023,08/14/2023,Right angle,West End Road × Rt 577 (South Wyoming Avenue),I-2023-022742
+40.745829,-74.23696,pdo,2023,08/15/2023,Fixed object,South Orange Avenue,I-2023-022834
+40.751801,-74.23862,pdo,2023,08/16/2023,Sideswipe (same dir),Centre Street × Finley Place,I-2023-022907
+40.746149,-74.25923,pdo,2023,08/17/2023,Fixed object,South Orange Ave (CR 510) × Vose Avenue,I-2023-022948
+40.744699,-74.24859,pdo,2023,08/20/2023,Rear-end,South Orange Ave (CR 510) × University Court,I-2023-023224
+40.752672,-74.25604,pdo,2023,08/20/2023,Struck parked vehicle,East Clark Cir × Hillside Place,I-2023-023249
+40.743554,-74.2606,pdo,2023,08/21/2023,Right angle,Third Street × Valley Street (Essex County 638),I-2023-023377
+40.744666,-74.24841,vru,2023,08/22/2023,Pedalcyclist,South Orange Ave (CR 510) × University Court,I-2023-023466
+40.738578,-74.26524,pdo,2023,08/23/2023,Fixed object,Valley Street,I-2023-023551
+40.745786,-74.26029,pdo,2023,08/25/2023,Backing,Sloan Street × First Street,I-2023-023747
+40.745247,-74.25716,pdo,2023,08/26/2023,Right angle,Irvington Avenue (Essex County 665) × Academy Street,I-2023-023848
+40.745433,-74.25644,pdo,2023,08/26/2023,Rear-end,South Orange Ave (CR 510) × Academy Street,I-2023-023862
+40.746673,-74.26429,pdo,2023,08/28/2023,Struck parked vehicle,South Ridgewood Road × Conway Court,I-2023-024014
+40.743554,-74.26061,pdo,2023,08/28/2023,Right angle,Valley Street (Essex County 638) × Third Street,I-2023-024080
+40.751792,-74.25492,pdo,2023,08/29/2023,Struck parked vehicle,Vose Avenue × Raymond Avenue,I-2023-024157
+40.742374,-74.2507,pdo,2023,08/31/2023,Right angle,Ward Place × Gardner Avenue,I-2023-024429
+40.741375,-74.24052,injury,2023,09/04/2023,Fixed object,Milton Place × Underwood Street,I-2023-024859
+40.745863,-74.25833,pdo,2023,09/04/2023,Struck parked vehicle,South Orange Ave (CR 510) × Essex County 638 S,I-2023-024860
+40.745945,-74.24234,pdo,2023,09/05/2023,Right angle,Centre Street × South Orange Ave (CR 510),I-2023-024989
+40.745815,-74.25765,pdo,2023,09/06/2023,Rear-end,South Orange Ave (CR 510) × Irvington Ave (CR 665),I-2023-025081
+40.74788,-74.25604,injury,2023,09/07/2023,Right angle,Ralston Avenue × Scotland Road (Essex County 638),I-2023-025219
+40.745749,-74.25802,pdo,2023,09/07/2023,Rear-end,South Orange Ave (CR 510) × Scotland Road (Essex County 638),I-2023-025232
+40.74596,-74.24249,pdo,2023,09/09/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Centre Street,I-2023-025333
+40.747474,-74.27374,pdo,2023,09/08/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Rt 577 (South Wyoming Avenue),I-2023-025334
+40.745945,-74.24233,pdo,2023,09/08/2023,Backing,South Orange Ave (CR 510) × Centre St / Turrell Ave,I-2023-025337
+40.745421,-74.25733,pdo,2023,09/08/2023,Sideswipe (same dir),Irvington Avenue (Essex County 665) × Academy Street,I-2023-025342
+40.739366,-74.25251,injury,2023,09/08/2023,Right angle,Irvington Ave (CR 665) × College Pl,I-2023-025355
+40.746501,-74.25736,pdo,2023,09/09/2023,Head-on,Scotland Road (Essex County 638) × Taylor Place,I-2023-025413
+40.752319,-74.24232,pdo,2023,09/09/2023,Struck parked vehicle,Warwick Avenue × Sylvan Way,I-2023-025422
+40.745822,-74.27515,pdo,2023,09/10/2023,Rear-end,CR 577 (Prospect/Wyoming) × Lenox Ave,I-2023-025493
+40.747468,-74.27375,pdo,2023,09/12/2023,Sideswipe (same dir),South Orange Ave (CR 510) × CR 577 (Prospect/Wyoming),I-2023-025693
+40.749724,-74.25646,pdo,2023,09/12/2023,Sideswipe (same dir),Vose Avenue × Raymond Avenue,I-2023-025748
+40.742394,-74.25071,pdo,2023,09/13/2023,Sideswipe (same dir),Gardner Ave × Radel Ter,I-2023-025807
+40.745866,-74.26129,pdo,2023,09/13/2023,Struck parked vehicle,Sopac Way (Parking Lot),I-2023-025851
+40.750774,-74.23946,injury,2023,09/14/2023,Rear-end,Centre Street × Warwick Ave,I-2023-025990
+40.746527,-74.25775,pdo,2023,09/15/2023,Struck parked vehicle,Scotland Rd [Parking Lot],I-2023-026079
+40.745303,-74.25541,injury,2023,09/15/2023,Rear-end,South Orange Ave (CR 510) × Prospect St,I-2023-026099
+40.740606,-74.253,pdo,2023,09/16/2023,Rear-end,Irvington Ave (CR 665) × W. Fairview Ave,I-2023-026215
+40.746171,-74.25993,pdo,2023,09/16/2023,Struck parked vehicle,Sloan St × South Orange Ave (CR 510),I-2023-026216
+40.746372,-74.25904,pdo,2023,09/16/2023,Backing,Vose La × South Orange Ave (CR 510),I-2023-026240
+40.750106,-74.25625,pdo,2023,09/16/2023,Struck parked vehicle,Vose La × Raymond Ave,I-2023-026244
+40.74596,-74.24242,pdo,2023,09/17/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Centre Street,I-2023-026366
+40.742184,-74.25787,pdo,2023,09/18/2023,Left turn / U-turn,Third St × Prospect St,I-2023-026426
+40.742281,-74.26175,pdo,2023,09/18/2023,Struck parked vehicle,Valley St / Scotland Rd (CR 638) × Fourth St,I-2023-026432
+40.747525,-74.2635,pdo,2023,09/20/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Maplewood Avenue,I-2023-026679
+40.742895,-74.25929,pdo,2023,09/21/2023,Struck parked vehicle,Third St × Academy Street,I-2023-026777
+40.746345,-74.25985,pdo,2023,09/22/2023,Rear-end,South Orange Ave (CR 510) × Sloan St,I-2023-026896
+40.742484,-74.26164,injury,2023,09/24/2023,Fixed object,Valley St / Scotland Rd (CR 638) × 4Th St,I-2023-027097
+40.749843,-74.24012,pdo,2023,09/26/2023,Sideswipe (same dir),Centre Street × Hartford Rd,I-2023-027277
+40.745029,-74.25254,pdo,2023,09/28/2023,Right angle,South Orange Ave (CR 510) × Grove Rd,I-2023-027537
+40.740218,-74.25283,pdo,2023,09/28/2023,Struck parked vehicle,Irvington Ave (CR 665) × Radel Ter,I-2023-027559
+40.754458,-74.26033,pdo,2023,09/30/2023,Rear-end,Maplewood Avenue × Ravine Rd,I-2023-027683
+40.755225,-74.25197,pdo,2023,09/30/2023,Right angle,Montrose Ave × Vose La,I-2023-027710
+40.7463,-74.25977,pdo,2023,10/02/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Sloan St,I-2023-027961
+40.747517,-74.26353,pdo,2023,10/02/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Maplewood Avenue,I-2023-027969
+40.737062,-74.26378,vru,2023,09/29/2023,Pedestrian,Academy Street × Hixon Rd,I-2023-028082
+40.747517,-74.26355,pdo,2023,10/03/2023,Right angle,South Orange Ave (CR 510) × Maplewood Avenue,I-2023-028097
+40.745028,-74.25252,injury,2023,10/04/2023,Right angle,South Orange Ave (CR 510) × Grove Rd,I-2023-028139
+40.747363,-74.26363,pdo,2023,10/04/2023,Sideswipe (same dir),Maplewood Avenue × South Orange Ave (CR 510),I-2023-028173
+40.741722,-74.24658,pdo,2023,10/04/2023,Fixed object,S Orange Ave (Parking Lot),I-2023-028179
+40.740716,-74.25238,pdo,2023,10/04/2023,Struck parked vehicle,Radel Ter × Irvington Ave (CR 665),I-2023-028192
+40.74815,-74.26549,injury,2023,10/05/2023,Right angle,South Orange Ave (CR 510) × Conway Ct,I-2023-028231
+40.743402,-74.24967,pdo,2023,10/06/2023,Sideswipe (same dir),Radel Ter × Gardner Ave,I-2023-028352
+40.745676,-74.25808,injury,2023,10/06/2023,Sideswipe (same dir),Valley St / Scotland Rd (CR 638) × South Orange Ave (CR 510),I-2023-028378
+40.74547,-74.2567,pdo,2023,10/07/2023,Rear-end,South Orange Ave (CR 510) × Academy Street,I-2023-028470
+40.74651,-74.25738,injury,2023,10/10/2023,Head-on,Valley St / Scotland Rd (CR 638) × Taylor Pl,I-2023-028801
+40.748697,-74.26739,pdo,2023,10/11/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Harmon Dr,I-2023-028945
+40.740346,-74.25288,injury,2023,10/13/2023,Sideswipe (same dir),Irvington Ave (CR 665) × Radel Ter,I-2023-029150
+40.741557,-74.25382,pdo,2023,10/13/2023,Sideswipe (opp),Irvington Ave (CR 665) × Fairview Ave,I-2023-029176
+40.748058,-74.24122,pdo,2023,10/14/2023,Sideswipe (opp),Centre Street × Montrose Ave,I-2023-029190
+40.737984,-74.25168,pdo,2023,10/14/2023,Sideswipe (same dir),Irvington Ave (CR 665) × Wetmore Ave,I-2023-029237
+40.751877,-74.23856,injury,2023,10/16/2023,Rear-end,Centre Street × Stirling Ave,I-2023-029469
+40.746751,-74.24764,pdo,2023,10/18/2023,Struck parked vehicle,Marshall Ct × Fielding Ct,I-2023-029701
+40.745156,-74.25927,injury,2023,10/19/2023,Fixed object,Valley St / Scotland Rd (CR 638) × First St,I-2023-029777
+40.74789,-74.27177,pdo,2023,10/21/2023,Fixed object,CR 577 (Prospect/Wyoming) × West End Rd,I-2023-029965
+40.742354,-74.2507,injury,2023,10/22/2023,Left turn / U-turn,University Ct / Ward Pl ** × Gardner Ave,I-2023-030046
+40.744151,-74.26177,pdo,2023,10/22/2023,Sideswipe (same dir),Third Street × Sloan Street,I-2023-030091
+40.746104,-74.26478,pdo,2023,10/23/2023,Rear-end,Maplewood Avenue × Third St,I-2023-030140
+40.747967,-74.27178,injury,2023,10/24/2023,Left turn / U-turn,CR 577 (Prospect/Wyoming) × West End Rd,I-2023-030353
+40.751804,-74.24125,pdo,2023,10/25/2023,Struck parked vehicle,Warwick Ave × Centre Street,I-2023-030441
+40.74581,-74.25794,pdo,2023,10/25/2023,Sideswipe (opp),Valley St / Scotland Rd (CR 638) × South Orange Ave (CR 510),I-2023-030442
+40.746658,-74.26428,pdo,2023,10/25/2023,Struck parked vehicle,Forest/Maplewd/N-S Ridgewd/S Valley/Valley/Walton × Conway Ct,I-2023-030443
+40.749721,-74.24029,pdo,2023,10/25/2023,Right angle,Centre Street × Hartford Rd,I-2023-030473
+40.736,-74.26206,vru,2023,10/26/2023,Pedalcyclist,Sherman Pl × Prospect St,I-2023-030557
+40.743745,-74.2558,pdo,2023,10/26/2023,Struck parked vehicle,Irvington Avenue (Essex County 665) × Prospect Street,I-2023-030587
+40.740984,-74.26231,pdo,2023,10/28/2023,Struck parked vehicle,Fifth St × Valley St / Scotland Rd (CR 638),I-2023-030814
+40.745862,-74.25835,pdo,2023,10/29/2023,Rear-end,South Orange Ave (CR 510) × Essex County 638 S,I-2023-030871
+40.74827,-74.24107,pdo,2023,10/29/2023,Rear-end,Centre Street × Montrose Ave,I-2023-030903
+40.744676,-74.24841,injury,2023,10/29/2023,Right angle,South Orange Ave (CR 510) × Radel Ter,I-2023-030916
+40.739774,-74.25976,injury,2023,10/31/2023,Right angle,Fifth St × Prospect St,I-2023-031085
+40.758667,-74.2749,pdo,2023,10/31/2023,Encroachment,Longview Rd × Glenview Rd,I-2023-031117
+40.753423,-74.26708,pdo,2023,11/01/2023,Head-on,N Wyoming Ave (CR 577) × Mead Street,I-2023-031148
+40.749819,-74.26469,pdo,2023,11/01/2023,Rear-end,Tillou Road × Maplewood Avenue,I-2023-031150
+40.744893,-74.25936,pdo,2023,11/01/2023,Struck parked vehicle,Valley Street (Essex County 638) × First Street,I-2023-031156
+40.744667,-74.24841,injury,2023,11/02/2023,Left turn / U-turn,South Orange Ave (CR 510) × Radel Ter,I-2023-031319
+40.744196,-74.26176,pdo,2023,11/02/2023,Right angle,Third St × Sloan St,I-2023-031335
+40.743575,-74.26059,pdo,2023,11/02/2023,Rear-end,Valley St / Scotland Rd (CR 638) × Third St,I-2023-031368
+40.746345,-74.25985,pdo,2023,11/02/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Sloan St,I-2023-031374
+40.74886,-74.2571,pdo,2023,11/02/2023,Struck parked vehicle,Vose La × Mead St,I-2023-031378
+40.74536,-74.25583,pdo,2023,11/03/2023,Fixed object,South Orange Ave (CR 510) × Prospect Street,I-2023-031466
+40.744949,-74.25935,pdo,2023,11/03/2023,Sideswipe (same dir),Valley Street (Essex County 638) × First Street,I-2023-031510
+40.746305,-74.25183,pdo,2023,11/06/2023,Struck parked vehicle,Ralston Ave × Grove Rd,I-2023-031777
+40.745731,-74.24321,injury,2023,11/07/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Turrell Ave,I-2023-031857
+40.744205,-74.26181,pdo,2023,11/07/2023,Fixed object,Third Street × Sloan Street,I-2023-031871
+40.744176,-74.25987,pdo,2023,11/07/2023,Struck parked vehicle,Second Street × Valley Street (Essex County 638),I-2023-031873
+40.74741,-74.26316,pdo,2023,11/07/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Maplewood Avenue,I-2023-031889
+40.74609,-74.26006,pdo,2023,11/08/2023,Struck parked vehicle,Sloan St × South Orange Ave (CR 510),I-2023-031939
+40.746084,-74.26005,pdo,2023,11/08/2023,Backing,Sloan St × South Orange Ave (CR 510),I-2023-031973
+40.740157,-74.25281,pdo,2023,11/09/2023,Rear-end,Irvington Ave (CR 665) × Radel Ter,I-2023-032046
+40.751547,-74.25512,pdo,2023,11/09/2023,Struck parked vehicle,Vose La × Raymond Ave,I-2023-032084
+40.747525,-74.26334,pdo,2023,11/12/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Maplewood Avenue,I-2023-032489
+40.745747,-74.258,pdo,2023,11/13/2023,Right angle,South Orange Ave (CR 510) × Valley St / Scotland Rd (CR 638),I-2023-032571
+40.740227,-74.25287,vru,2023,11/13/2023,Pedestrian,Irvington Ave (CR 665) × Radel Ter,I-2023-032578
+40.745355,-74.26414,pdo,2023,11/14/2023,Right angle,Church St × Third St,I-2023-032697
+40.745951,-74.25862,pdo,2023,11/16/2023,Rear-end,South Orange Ave (CR 510) × Essex County 638 S,I-2023-032903
+40.745953,-74.24274,pdo,2023,11/17/2023,Left turn / U-turn,South Orange Ave (CR 510) × Turrell Ave,I2023033005
+40.755678,-74.25947,pdo,2023,11/19/2023,Fixed object,Maplewood Avenue × Mountain House Rd,I-2023-033325
+40.749801,-74.26183,pdo,2023,11/20/2023,Head-on,Maplewood Avenue × Beech Spring Rd,I-2023-033480
+40.745617,-74.23887,injury,2023,11/20/2023,Sideswipe (same dir),South Orange Ave (CR 510) × S. Stanley Rd,I-2023-033481
+40.745323,-74.25897,vru,2023,11/20/2023,Pedestrian,Essex County 638 S × Valley St / Scotland Rd (CR 638),I-2023-033487
+40.743062,-74.27182,pdo,2023,11/21/2023,Right angle,Lenox Ave × Ridgewood Road,I-2023-033562
+40.739638,-74.25259,injury,2023,11/22/2023,Rear-end,Irvington Ave (CR 665) × College Pl,I-2023-033647
+40.744705,-74.25957,pdo,2023,11/22/2023,Struck parked vehicle,Valley St / Scotland Rd (CR 638) × First St,I-2023-033657
+40.746763,-74.26422,pdo,2023,11/23/2023,Rear-end,Conway Ct ** × S Ridgewood Ave,I-2023-033730
+40.742783,-74.23989,pdo,2023,11/23/2023,Struck parked vehicle,Cameron Rd × Mercer Pl,I-2023-033774
+40.751261,-74.25383,injury,2023,11/24/2023,Fixed object,Valley St / Scotland Rd (CR 638) × Turrell Ave,I-2023-033795
+40.743553,-74.2606,injury,2023,11/24/2023,Right angle,Valley St / Scotland Rd (CR 638) × Third St,I-2023-033858
+40.740313,-74.25291,injury,2023,11/25/2023,Right angle,Irvington Ave (CR 665) × Radel Ter,I-2023-033872
+40.749169,-74.25687,pdo,2023,11/25/2023,Right angle,Mead St × Vose La,I-2023-033929
+40.745893,-74.26022,pdo,2023,11/26/2023,Backing,Sloan St × First St,I-2023-034035
+40.74615,-74.2423,pdo,2023,11/27/2023,Rear-end,Centre Street × South Orange Ave (CR 510),I-2023-034173
+40.748155,-74.26546,pdo,2023,11/27/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Conway Ct,I-2023-034179
+40.743344,-74.26079,pdo,2023,11/30/2023,Right angle,Valley St / Scotland Rd (CR 638) × Third St,I-2023-034475
+40.749166,-74.25687,injury,2023,12/01/2023,Left turn / U-turn,Vose La × Mead St,I-2023-034562
+40.739726,-74.26407,vru,2023,12/02/2023,Pedalcyclist,Valley St / Scotland Rd (CR 638) × Roland Ave,I-2023-034644
+40.74846,-74.24097,pdo,2023,12/03/2023,Left turn / U-turn,Centre Street × Montrose Ave,I-2023-034766
+40.756001,-74.25002,injury,2023,12/04/2023,Rear-end,Valley St / Scotland Rd (CR 638) × Randolph Pl,I-2023-034899
+40.74953,-74.25515,pdo,2023,12/05/2023,Right angle,Valley St / Scotland Rd (CR 638) × Raymond Ave,I-2023-035075
+40.738939,-74.2603,pdo,2023,12/06/2023,Struck parked vehicle,Prospect St × Garfield Pl,I-2023-035238
+40.743815,-74.26689,pdo,2023,12/07/2023,Struck parked vehicle,Maplewood Avenue × Edgewood Ter,I-2023-035295
+40.747564,-74.26361,injury,2023,12/09/2023,Rear-end,South Orange Ave (CR 510) × Maplewood Avenue,I-2023-035440
+40.749656,-74.23621,pdo,2023,12/10/2023,Fixed object,Holland Road × Kenmore Avenue,I-2023-035576
+40.745102,-74.2525,vru,2023,12/10/2023,Pedestrian,Grove Rd × South Orange Ave (CR 510),I-2023-035579
+40.742001,-74.25424,pdo,2023,12/10/2023,Rear-end,Irvington Ave (CR 665) × Tiechnor Ave,I-2023-035590
+40.745445,-74.25697,vru,2023,12/11/2023,Pedalcyclist,Academy Street × South Orange Ave (CR 510),I-2023-035670
+40.749264,-74.25536,pdo,2023,12/11/2023,Rear-end,Valley St / Scotland Rd (CR 638) × Raymond Ave,I-2023-035679
+40.739773,-74.25342,pdo,2023,12/11/2023,Backing,Radel Ter × Irvington Ave (CR 665),I-2023-035721
+40.749178,-74.24054,pdo,2023,12/12/2023,Animal,Centre Street × Hartford Ct,I-2023-035851
+40.738223,-74.25519,pdo,2023,12/12/2023,Right angle,Montague Pl × Radel Ter,I-2023-035855
+40.74612,-74.26003,pdo,2023,12/13/2023,Backing,Sloan St × South Orange Ave (CR 510),I-2023-035922
+40.745049,-74.25294,injury,2023,12/14/2023,Rear-end,South Orange Ave (CR 510) × Grove Rd,I-2023-036083
+40.740536,-74.25296,pdo,2023,12/17/2023,Struck parked vehicle,Irvington Ave (CR 665) × Radel Ter,I-2023-036325
+40.753064,-74.24796,vru,2023,12/18/2023,Pedestrian,Montrose Ave × Berkeley Ave,I-2023-036423
+40.74404,-74.26017,pdo,2023,12/19/2023,Struck parked vehicle,Valley St / Scotland Rd (CR 638) × Second St,I-2023-036537
+40.749032,-74.24244,pdo,2023,12/19/2023,Struck parked vehicle,Montrose Ave × Centre Street,I-2023-036544
+40.746331,-74.25985,pdo,2023,12/19/2023,Sideswipe (same dir),South Orange Ave (CR 510) × Sloan St,I-2023-036546
+40.759379,-74.26317,pdo,2023,12/19/2023,Right angle,CR 577 (Prospect/Wyoming) × Blanchard Rd,I-2023-036547
+40.744796,-74.25002,pdo,2023,12/19/2023,Left turn / U-turn,South Orange Ave (CR 510) × Fairview Ave,I-2023-036549
+40.756239,-74.26804,pdo,2023,12/20/2023,Rear-end,Redmond Rd × Harding Dr,I-2023-036635
+40.748939,-74.24921,pdo,2023,12/20/2023,Struck parked vehicle,Turrell Ave × Raymond Ave,I-2023-036637
+40.747163,-74.27524,pdo,2023,12/22/2023,Animal,South Orange Ave (CR 510) × West End Rd,I-2023-036921
+40.748883,-74.26252,pdo,2023,12/23/2023,Struck parked vehicle,Forest/Maplewd/N-S Ridgewd/S Valley/Valley/Walton × Tillou St,I-2023-036938
+40.747396,-74.26309,pdo,2023,12/25/2023,Fixed object,South Orange Ave (CR 510) × Maplewood Avenue,I-2023-037094
+40.749533,-74.25517,pdo,2023,12/29/2023,Right angle,Valley St / Scotland Rd (CR 638) × Raymond Ave,I-2023-037626
+40.738178,-74.25994,pdo,2023,12/31/2023,Backing,Garfield Pl × Prospect St,I-2023-037813
+40.745949,-74.24234,pdo,2023,03/21/2023,Left turn / U-turn,South Orange Ave (CR 510) × Centre Street,I-2023-8027

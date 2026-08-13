@@ -1,0 +1,55 @@
+{
+  "waysTotal": 3379,
+  "waysExcluded": 231,
+  "sidewalkSeparateWays": 492,
+  "sidewalkCollapsed": 402,
+  "sidewalkUnmatched": 90,
+  "nodesTotal": 4502,
+  "largestComponentPct": 0.9671321160042965,
+  "tagCoverage": {
+    "sidewalk": 0.1354723707664884,
+    "maxspeed": 0.12537136066547833,
+    "lanes": 0.13606654783125371,
+    "crossing": 0.3183029764549089,
+    "crossingRaw": 0.08196357174589071
+  },
+  "signalNodes": 307,
+  "signalNodesRaw": 66,
+  "snap": {
+    "unsnapped": [],
+    "assignmentMismatches": [
+      {
+        "cluster": 6,
+        "expected": 30,
+        "assigned": 15
+      },
+      {
+        "cluster": 7,
+        "expected": 18,
+        "assigned": 12
+      },
+      {
+        "cluster": 28,
+        "expected": 10,
+        "assigned": 6
+      },
+      {
+        "cluster": 20,
+        "expected": 5,
+        "assigned": 7
+      },
+      {
+        "cluster": 22,
+        "expected": 3,
+        "assigned": 4
+      },
+      {
+        "cluster": 48,
+        "expected": 3,
+        "assigned": 4
+      }
+    ]
+  },
+  "joinCoveragePct": 100,
+  "riskNodes": 52
+}

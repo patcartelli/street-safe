@@ -1,0 +1,19 @@
+{
+  "name": "street-safe",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "tsx --test engine/tests/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "extract": "tsx engine/build/extract-points.ts",
+    "fetch-osm": "tsx engine/build/fetch-osm.ts",
+    "fetch-osrm": "tsx engine/build/fetch-osrm-baseline.ts",
+    "build-engine": "tsx engine/build/build.ts",
+    "validate": "tsx engine/build/validate.ts"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.12",
+    "typescript": "^7.0.2",
+    "@types/node": "^26.2.0"
+  }
+}
