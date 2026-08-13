@@ -14,6 +14,7 @@
     "crossingRaw": 0.08196357174589071
   },
   "signalNodes": 307,
+  "signalNodesRaw": 66,
   "snap": {
     "unsnapped": [],
     "assignmentMismatches": [

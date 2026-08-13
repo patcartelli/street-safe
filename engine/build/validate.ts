@@ -77,8 +77,10 @@ console.table(rows.map((r) => ({
 // Report 2: OSRM comparison, alarm at ±25%. Printed before any assert can throw so the
 // signal is visible even when assert 2 (below) fails as documented.
 const baselinePath = join(DATA, 'osrm-baselines.json');
-if (existsSync(baselinePath)) {
-  const base = JSON.parse(readFileSync(baselinePath, 'utf8'))[VALIDATION_PAIR.name];
+const base = existsSync(baselinePath)
+  ? JSON.parse(readFileSync(baselinePath, 'utf8'))[VALIDATION_PAIR.name]
+  : undefined;
+if (base) {
   const ratio = rows[0].distanceM / base.distanceM;
   const flag = Math.abs(ratio - 1) > 0.25 ? '  ⚠️ OUTSIDE ±25% — check graph connectivity/filtering' : ' ✓';
   console.log(`λ=0 vs OSRM foot: ${Math.round(rows[0].distanceM)} m vs ${Math.round(base.distanceM)} m (ratio ${ratio.toFixed(2)})${flag}`);

@@ -13,6 +13,7 @@ export interface BuildReport {
   nodesTotal: number; largestComponentPct: number;
   tagCoverage: { sidewalk: number; maxspeed: number; lanes: number; crossing: number; crossingRaw: number };
   signalNodes: number;
+  signalNodesRaw: number;
 }
 
 const SIGNAL_RADIUS_M = 20;
@@ -162,6 +163,9 @@ export function buildGraph(osm: OsmJson): { graph: SerializedGraph; report: Buil
         crossingRaw: [...nodeIds].filter((id) => osmNodes.get(Number(id))?.tags?.crossing != null).length / Math.max(1, nodes.length),
       },
       signalNodes: nodes.filter((n) => n.signal).length,
+      // signalNodesRaw mirrors crossingRaw: exact-node-identity count (graph nodes whose OWN
+      // OSM node carries highway=traffic_signals), no 20 m radius involved.
+      signalNodesRaw: [...nodeIds].filter((id) => osmNodes.get(Number(id))?.tags?.highway === 'traffic_signals').length,
     },
   };
 }
