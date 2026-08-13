@@ -1,0 +1,18 @@
+/** One-shot cache of OSRM's foot route for the validation pair (spec: the
+ *  public demo server is rate-limited; the harness must never call it live). */
+import { writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+
+const PAIRS = [
+  { name: 'station-to-south-mountain', from: [40.7461, -74.2606], to: [40.7380, -74.2679] },
+];
+const out: Record<string, { distanceM: number; durationS: number }> = {};
+for (const p of PAIRS) {
+  const url = `https://router.project-osrm.org/route/v1/foot/${p.from[1]},${p.from[0]};${p.to[1]},${p.to[0]}?overview=false`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`OSRM ${res.status}`);
+  const json = await res.json();
+  out[p.name] = { distanceM: json.routes[0].distance, durationS: json.routes[0].duration };
+}
+writeFileSync(fileURLToPath(new URL('../data/osrm-baselines.json', import.meta.url)), JSON.stringify(out, null, 2));
+console.log(out);
