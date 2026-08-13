@@ -85,6 +85,12 @@ for (let i = 1; i < rows.length; i++) {
   }
 }
 // Assert 2 (spec): λ≥2 exposure strictly below λ=0 exposure when the latter > 0.
+// KNOWN FAILURE as of 2026-08-13 — exposure stays 1→1 because the Valley×Third risk
+// cluster snapped to node 13198807872 while routes traverse sibling node 13198807866
+// (~14.5 m away) which carries no risk record; a risk/graph topology join gap (single-
+// node snap vs multi-node intersection complex), NOT a λ-tuning issue. Diagnosis:
+// .git/sdd/task-12-report.md. Do not weaken this assert — fix the snap model (e.g.
+// risk association radius) and re-run.
 const e0 = rows[0].exposure;
 const e2 = rows.find((r) => r.lambda === 2)!.exposure;
 if (e0 > 0 && e2 >= e0) throw new Error(`hotspot exposure did not drop: λ=0 → ${e0}, λ=2 → ${e2}`);
