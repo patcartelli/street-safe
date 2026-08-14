@@ -18,7 +18,7 @@
     <div class="wordmark">
       <span class="wordmark-mark">◆</span> STREET&nbsp;SAFE
     </div>
-    <div class="topbar-sub">walking routes, weighted for safety — prototype / mock data</div>
+    <div class="topbar-sub">walking routes, weighted for safety — real crash data, prototype UI</div>
   </header>
 
   <main class="layout">
@@ -42,7 +42,7 @@
     <aside class="readout-pane">
       <div id="readout-empty" class="readout-empty">
         <p>Pick a start and destination, then find a route.</p>
-        <p class="readout-empty-sub">This demo scores routes against a mock crash dataset for South Orange, NJ — swap in real municipal data once confirmed (see project notes).</p>
+        <p class="readout-empty-sub">This demo scores routes against real reported crash data for South Orange, NJ, matched to the street network. Walking time is a flat-pace estimate; elevation is not factored in (see README).</p>
       </div>
 
       <div id="readout-content" class="readout-content hidden">
@@ -78,7 +78,6 @@
   </main>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="data/mock-crashes.js"></script>
-  <script src="app.js"></script>
+  <script src="web/bundle.js"></script>
 </body>
 </html>
