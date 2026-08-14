@@ -9,11 +9,13 @@
     "fetch-osm": "tsx engine/build/fetch-osm.ts",
     "fetch-osrm": "tsx engine/build/fetch-osrm-baseline.ts",
     "build-engine": "tsx engine/build/build.ts",
+    "build-web": "esbuild web/main.ts --bundle --format=iife --outfile=web/bundle.js --target=es2020",
     "validate": "tsx engine/build/validate.ts"
   },
   "devDependencies": {
+    "@types/node": "^26.2.0",
+    "esbuild": "^0.23.1",
     "tsx": "^4.23.12",
-    "typescript": "^7.0.2",
-    "@types/node": "^26.2.0"
+    "typescript": "^7.0.2"
   }
 }
