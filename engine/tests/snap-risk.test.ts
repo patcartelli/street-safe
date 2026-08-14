@@ -103,3 +103,54 @@ test('snapRisk: assignment mismatch when assigned count deviates > ±30%', () =>
   assert.equal(mismatch.assigned, 2);
   // |2 - 10| / 10 = 0.8 = 80% > 30% threshold
 });
+
+// Intersection-complex fixture. Exact haversine distances (computed against
+// the site's own haversineM, R=6371000m):
+//   A-B ≈ 14.4553 m  (shares 'Test St' with A → duplicates)
+//   A-C ≈ 14.3225 m  (shares 'Cross Ave' with A → duplicates)
+//   A-D ≈ 16.7409 m  (within the 20 m radius, but D's only incident way is
+//                      'Far St' via B-D — no roadKey overlap with A → the
+//                      genuine negative case: proximity alone is not enough)
+//   B-D ≈ 10.1710 m  (D duplicates onto B when B carries its own risk instead)
+const complexGraph = loadGraph({
+  nodes: [
+    { id: 'A', lat: 40.7400, lon: -74.2600, signal: false, crossing: null },
+    { id: 'B', lat: 40.74013, lon: -74.2600, signal: false, crossing: null }, // ~14.4553 m from A, same street
+    { id: 'C', lat: 40.7400, lon: -74.26017, signal: false, crossing: null }, // ~14.3225 m from A, different street
+    { id: 'D', lat: 40.74012, lon: -74.26012, signal: false, crossing: null }, // ~16.7409 m from A, no shared roadKey with A
+  ],
+  edges: [
+    { from: 'A', to: 'B', wayId: '1', name: 'Test St', highway: 'residential', lengthM: 14, lts: 2, ltsReasons: [], steps: false, geometry: [[40.74, -74.26], [40.74013, -74.26]] },
+    { from: 'A', to: 'C', wayId: '2', name: 'Cross Ave', highway: 'residential', lengthM: 14, lts: 2, ltsReasons: [], steps: false, geometry: [[40.74, -74.26], [40.74, -74.26017]] },
+    { from: 'B', to: 'D', wayId: '3', name: 'Far St', highway: 'residential', lengthM: 10, lts: 2, ltsReasons: [], steps: false, geometry: [[40.74013, -74.26], [40.74012, -74.26012]] },
+  ],
+});
+
+test('risk duplicates onto same-road complex members only', () => {
+  const hs = [{ cluster: 0, lat: 40.74001, lon: -74.26, n: 5, stress: 20, injury_n: 1, vru_n: 0, location: 'TEST ST', cross: 'CROSS AVE' }];
+  const { risk, report } = snapRisk(complexGraph, hs, [], new Map());
+  const byNode = new Map(risk.map((r) => [r.nodeId, r]));
+  const primary = byNode.get('A')!;
+  assert.equal(primary.complexOf, undefined);
+  const member = byNode.get('B')!;           // B shares 'Test St' with A → duplicated
+  assert.equal(member.complexOf, 'A');
+  assert.equal(member.stress, 20);           // full payload, not split
+  const cMember = byNode.get('C')!;          // C shares 'Cross Ave' with A → duplicated
+  assert.equal(cMember.complexOf, 'A');
+  assert.equal(cMember.stress, 20);
+  // D is within 20 m of A (~16.74 m) but shares no roadKey with A
+  // (its only incident way, 'Far St', touches B — not A) → NOT duplicated.
+  assert.equal(byNode.has('D'), false);
+  assert.equal(report.complexMembers, 2);
+});
+
+test('complex duplication never overwrites a node\'s own cluster risk', () => {
+  const hs = [
+    { cluster: 0, lat: 40.74001, lon: -74.26, n: 5, stress: 20, injury_n: 1, vru_n: 0, location: 'TEST ST', cross: 'CROSS AVE' },
+    { cluster: 1, lat: 40.74014, lon: -74.26, n: 2, stress: 7, injury_n: 0, vru_n: 0, location: 'TEST ST', cross: 'UPPER' },
+  ];
+  const { risk } = snapRisk(complexGraph, hs, [], new Map());
+  const b = risk.find((r) => r.nodeId === 'B')!;
+  assert.equal(b.complexOf, undefined);      // B's own cluster 1 wins
+  assert.equal(b.stress, 7);
+});

@@ -1,5 +1,5 @@
 import { haversineM } from '../src/geo.js';
-import { nearestNode, type Graph } from '../src/graph.js';
+import { nearestNode, roadKey, type Graph } from '../src/graph.js';
 import { normalizeCase } from './causes.js';
 import type { NodeRisk, RiskSurface } from '../src/risk.js';
 
@@ -25,6 +25,7 @@ export interface PointRow {
 export interface SnapReport {
   unsnapped: Array<{ cluster: number; name: string; distM: number }>;
   assignmentMismatches: Array<{ cluster: number; expected: number; assigned: number }>;
+  complexMembers: number;
 }
 
 const SNAP_MAX_M = 30;
@@ -54,7 +55,7 @@ export function snapRisk(
     }
   }
 
-  const report: SnapReport = { unsnapped: [], assignmentMismatches: [] };
+  const report: SnapReport = { unsnapped: [], assignmentMismatches: [], complexMembers: 0 };
   const byNode = new Map<string, NodeRisk>();
 
   for (const h of hotspots) {
@@ -105,5 +106,36 @@ export function snapRisk(
       });
     }
   }
+
+  // Intersection-complex spread (spec 2026-08-13): a cluster snapped to one node
+  // of a multi-node intersection (dual carriageways, split signals) was invisible
+  // to routes traversing a sibling node 10–20 m away — the V1 assert-2 finding.
+  // Duplicate the full payload onto nearby same-road nodes; a walker traverses
+  // one member, so full (not split) risk per member is the physical reading.
+  const keysAt = (nodeId: string): Set<string> => {
+    const out = new Set<string>();
+    for (const idx of graph.adj.get(nodeId) ?? []) out.add(roadKey(graph.edges[idx]));
+    return out;
+  };
+  const COMPLEX_RADIUS_M = 20;
+  for (const primary of [...byNode.values()]) {
+    if (primary.complexOf) continue;
+    const pNode = graph.nodes.get(primary.nodeId)!;
+    const pKeys = keysAt(primary.nodeId);
+    for (const node of graph.nodes.values()) {
+      if (node.id === primary.nodeId || byNode.has(node.id)) continue; // own risk always wins
+      if (haversineM(pNode.lat, pNode.lon, node.lat, node.lon) > COMPLEX_RADIUS_M) continue;
+      if (![...keysAt(node.id)].some((k) => pKeys.has(k))) continue;
+      byNode.set(node.id, {
+        ...primary,
+        nodeId: node.id,
+        complexOf: primary.nodeId,
+        causeDistribution: { ...primary.causeDistribution },
+        clusterIds: [...primary.clusterIds],
+      });
+      report.complexMembers++;
+    }
+  }
+
   return { risk: [...byNode.values()], report };
 }
