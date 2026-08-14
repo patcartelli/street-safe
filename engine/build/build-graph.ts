@@ -16,7 +16,6 @@ export interface BuildReport {
   signalNodesRaw: number;
 }
 
-const SIGNAL_RADIUS_M = 20;
 const PEDESTRIAN_ONLY = new Set(['footway', 'path', 'pedestrian', 'steps']);
 
 function excluded(tags: Record<string, string>): boolean {
@@ -126,22 +125,46 @@ export function buildGraph(osm: OsmJson): { graph: SerializedGraph; report: Buil
   const keptEdges = edges.filter((e) => find(e.from) === mainRoot);
   const largestComponentPct = usedNodeIds.size ? (compSize.get(mainRoot!) ?? 0) / usedNodeIds.size : 0;
 
-  // Node records with signal/crossing association within 20 m.
-  // NOTE: this 20 m radius association spills a node's crossing tag onto its neighbors
-  // (48% of graph nodes have a neighbor within 20 m), so the "associated" tagCoverage.crossing
-  // figure below is systematically inflated relative to the exact-node-identity truth
-  // (tagCoverage.crossingRaw — see below), which discounts crossings that exist but aren't on
-  // this exact node. Radius rework is bundled with the STC-152 model fixes.
+  // Node records with signal/crossing nearest-node single assignment (spec 2026-08-13):
+  // each tagged OSM node marks exactly one graph node — the nearest one, not every graph
+  // node within a radius. The previous 20 m any-node radius spilled onto neighbors (48% of
+  // graph nodes have another within 20 m), systematically over-discounting crossings; the
+  // raw-vs-associated tagCoverage/signalNodes counts below stay as the honest exact-node
+  // signal (crossingRaw/signalNodesRaw), now joined by a materially tighter associated figure.
   const signals: OsmNode[] = [...osmNodes.values()].filter((n) => n.tags?.highway === 'traffic_signals');
   const crossings: OsmNode[] = [...osmNodes.values()].filter((n) => n.tags?.crossing);
   const nodeIds = new Set<string>();
   for (const e of keptEdges) { nodeIds.add(e.from); nodeIds.add(e.to); }
   const nodes: GraphNode[] = [...nodeIds].map((id) => {
     const on = osmNodes.get(Number(id))!;
-    const signal = signals.some((s) => haversineM(on.lat, on.lon, s.lat, s.lon) <= SIGNAL_RADIUS_M);
-    const cx = crossings.find((c) => haversineM(on.lat, on.lon, c.lat, c.lon) <= SIGNAL_RADIUS_M);
-    return { id, lat: on.lat, lon: on.lon, signal, crossing: cx?.tags?.crossing ?? null };
+    return { id, lat: on.lat, lon: on.lon, signal: false, crossing: null };
   });
+
+  const SIGNAL_ASSIGN_M = 20;
+  const CROSSING_ASSIGN_M = 10;
+  const nearestGraphNode = (lat: number, lon: number): { node: GraphNode; d: number } | null => {
+    let best: GraphNode | null = null;
+    let bestD = Infinity;
+    for (const n of nodes) {
+      const d = haversineM(lat, lon, n.lat, n.lon);
+      if (d < bestD) { bestD = d; best = n; }
+    }
+    return best ? { node: best, d: bestD } : null;
+  };
+  for (const s of signals) {
+    const hit = nearestGraphNode(s.lat, s.lon);
+    if (hit && hit.d <= SIGNAL_ASSIGN_M) hit.node.signal = true;
+  }
+  const crossingDist = new Map<string, number>();
+  for (const c of crossings) {
+    const hit = nearestGraphNode(c.lat, c.lon);
+    if (!hit || hit.d > CROSSING_ASSIGN_M) continue;
+    const prev = crossingDist.get(hit.node.id);
+    if (prev === undefined || hit.d < prev) {
+      crossingDist.set(hit.node.id, hit.d);
+      hit.node.crossing = c.tags?.crossing ?? null;
+    }
+  }
 
   // Tag coverage over road (non-pedestrian-only) kept ways.
   const roadWays = keptAfterCollapse.filter((w) => !PEDESTRIAN_ONLY.has(w.tags.highway));
@@ -153,10 +176,10 @@ export function buildGraph(osm: OsmJson): { graph: SerializedGraph; report: Buil
       waysTotal: ways.length, waysExcluded,
       sidewalkSeparateWays: sidewalkWays.length, sidewalkCollapsed, sidewalkUnmatched: sidewalkWays.length - sidewalkCollapsed,
       nodesTotal: nodes.length, largestComponentPct,
-      // crossing coverage = graph nodes with a non-null crossing association (20 m radius,
-      // see NOTE above) ÷ graph nodes. crossingRaw is the exact-node-identity figure: graph
-      // nodes whose OWN OSM node carries a crossing tag ÷ graph nodes, no radius involved —
-      // this is the honest model-grounding signal; the associated figure overstates it.
+      // crossing coverage = graph nodes with a non-null crossing association (nearest-node
+      // single assignment, ≤10 m, see above) ÷ graph nodes. crossingRaw is the exact-node-
+      // identity figure: graph nodes whose OWN OSM node carries a crossing tag ÷ graph nodes,
+      // no distance involved — the two now track much closer than under the old 20 m radius.
       tagCoverage: {
         sidewalk: frac('sidewalk'), maxspeed: frac('maxspeed'), lanes: frac('lanes'),
         crossing: nodes.filter((n) => n.crossing !== null).length / Math.max(1, nodes.length),
