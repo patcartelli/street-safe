@@ -10,10 +10,10 @@
     "sidewalk": 0.1354723707664884,
     "maxspeed": 0.12537136066547833,
     "lanes": 0.13606654783125371,
-    "crossing": 0.3183029764549089,
+    "crossing": 0.10062194580186584,
     "crossingRaw": 0.08196357174589071
   },
-  "signalNodes": 307,
+  "signalNodes": 67,
   "signalNodesRaw": 66,
   "snap": {
     "unsnapped": [],
@@ -48,8 +48,9 @@
         "expected": 3,
         "assigned": 4
       }
-    ]
+    ],
+    "complexMembers": 103
   },
   "joinCoveragePct": 100,
-  "riskNodes": 52
+  "riskNodes": 155
 }

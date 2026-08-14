@@ -1,5 +1,9 @@
 {
   "station-to-south-mountain": {
+    "distanceM": 1488.1,
+    "durationS": 138
+  },
+  "station-to-hixon-valley": {
     "distanceM": 1156.7,
     "durationS": 155.8
   }
