@@ -23,12 +23,14 @@ function grid(): SerializedGraph {
       N('O', 40.7400, -74.2620), N('M', 40.7400, -74.2600), N('D', 40.7400, -74.2580),
       N('Q1', 40.7410, -74.2620), N('Q2', 40.7410, -74.2580),
       N('S1', 40.7390, -74.2600), N('S2', 40.7410, -74.2600),
+      N('P', 40.7395, -74.2597),
     ],
     edges: [
       E('O', 'M', 'Big Ave', 'primary', 4, 200), E('M', 'D', 'Big Ave', 'primary', 4, 200),
       E('O', 'Q1', 'Calm St', 'residential', 1, 120), E('Q1', 'Q2', 'Calm St', 'residential', 1, 360),
       E('Q2', 'D', 'Calm St', 'residential', 1, 120),
       E('S1', 'M', 'Side St', 'residential', 2, 110), E('M', 'S2', 'Side St', 'residential', 2, 110),
+      E('M', 'P', 'Depot Drive', 'service', 3, 60),
     ],
   };
 }
@@ -97,4 +99,33 @@ test('backward traversal: D → O at λ=0 retraces Big Ave in reverse', () => {
   const r = route(g, noRisk, 'D', 'O', 0)!;
   assert.deepEqual(r.nodeIds, ['D', 'M', 'O']);
   assert.equal(r.distanceM, 400);
+});
+
+test('service ways are never the crossed road', () => {
+  const g = loadGraph(grid());
+  const r0 = route(g, noRisk, 'O', 'D', 0)!;
+  const mMove = r0.moves.find((m) => m.nodeId === 'M')!;
+  // Without the service exclusion, Depot Drive (LTS 3) would win the max scan.
+  assert.equal(mMove.crossedRoad, 'Side St');
+});
+
+test('a node whose only cross-ways are service charges zero crossing', () => {
+  // Sub-fixture: straight residential street through node B with only a service way crossing.
+  const g2 = loadGraph({
+    nodes: [
+      { id: 'A', lat: 40.7400, lon: -74.2620, signal: false, crossing: null },
+      { id: 'B', lat: 40.7400, lon: -74.2600, signal: false, crossing: null },
+      { id: 'C', lat: 40.7400, lon: -74.2580, signal: false, crossing: null },
+      { id: 'S', lat: 40.7395, lon: -74.2600, signal: false, crossing: null },
+    ],
+    edges: [
+      { from: 'A', to: 'B', wayId: 'w1', name: 'Main St', highway: 'residential', lengthM: 170, lts: 2, ltsReasons: [], steps: false, geometry: [] },
+      { from: 'B', to: 'C', wayId: 'w2', name: 'Main St', highway: 'residential', lengthM: 170, lts: 2, ltsReasons: [], steps: false, geometry: [] },
+      { from: 'S', to: 'B', wayId: 'w3', name: null, highway: 'service', lengthM: 60, lts: 2, ltsReasons: [], steps: false, geometry: [] },
+    ],
+  });
+  const r = route(g2, noRisk, 'A', 'C', 1)!;
+  const bMove = r.moves.find((m) => m.nodeId === 'B')!;
+  assert.equal(bMove.crossedRoad, null);
+  assert.equal(bMove.crossingPenaltyM, 0);
 });

@@ -54,3 +54,33 @@ test('nearestNode snaps', () => {
   const g = loadGraph(graph);
   assert.equal(nearestNode(g, 40.7401, -74.2601).id, '5');
 });
+
+/** Two graph nodes ~16 m apart; one OSM signal 6 m from node 25, 12 m from node 24.
+ *  Old 20 m radius marked both; nearest-only must mark exactly node 25.
+ *  Way 303 (25–27) forces node 25 to intersection status so it materializes as
+ *  its own graph node rather than being swallowed into edge geometry between 24 and 26
+ *  (verified against buildGraph's isIntersection logic: without it, 25 is an interior,
+ *  singly-used node on way 302 and never becomes a graph node).
+ */
+const SIG = { elements: [
+  { type: 'node', id: 21, lat: 40.7400, lon: -74.2620 },
+  { type: 'node', id: 24, lat: 40.7400, lon: -74.2600 },
+  { type: 'node', id: 25, lat: 40.74014, lon: -74.2600 },
+  { type: 'node', id: 26, lat: 40.7403, lon: -74.2600 },
+  { type: 'node', id: 27, lat: 40.7400, lon: -74.2580 },
+  { type: 'node', id: 28, lat: 40.74008, lon: -74.26001, tags: { highway: 'traffic_signals' } },
+  { type: 'node', id: 29, lat: 40.74011, lon: -74.25999, tags: { crossing: 'marked' } },
+  { type: 'way', id: 301, nodes: [21, 24, 27], tags: { highway: 'residential', name: 'Low St' } },
+  { type: 'way', id: 302, nodes: [24, 25, 26], tags: { highway: 'residential', name: 'Up Ave' } },
+  { type: 'way', id: 303, nodes: [25, 27], tags: { highway: 'service' } },
+] } as any;
+
+test('signal and crossing tags assign to exactly one nearest node', () => {
+  const { graph } = buildGraph(SIG);
+  const byId = new Map(graph.nodes.map((n) => [n.id, n]));
+  const signalled = graph.nodes.filter((n) => n.signal).map((n) => n.id);
+  assert.deepEqual(signalled, ['25']); // nearest only — node 24 must NOT be marked
+  const crossed = graph.nodes.filter((n) => n.crossing !== null).map((n) => n.id);
+  assert.deepEqual(crossed, ['25']); // crossing node 29 is ~4 m from 25, ~13 m from 24; 10 m cap excludes 24 anyway
+  assert.equal(byId.get('25')!.crossing, 'marked');
+});
