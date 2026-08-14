@@ -122,6 +122,25 @@ function showFetchError(message: string): void {
   emptyEl.appendChild(sub);
 }
 
+/** Resets to the empty state with a visible message, whether this is the
+ *  first click (readout-content still hidden) or a later failure after a
+ *  prior successful route (readout-content visible with stale lines/lists
+ *  that must not linger). */
+function showNoRoute(): void {
+  routeLayers.forEach((l) => map.removeLayer(l));
+  routeLayers = [];
+
+  el<HTMLDivElement>('readout-content').classList.add('hidden');
+
+  const emptyEl = el<HTMLDivElement>('readout-empty');
+  emptyEl.classList.remove('hidden');
+  emptyEl.innerHTML = '';
+
+  const p = document.createElement('p');
+  p.textContent = 'No route could be found between these two points.';
+  emptyEl.appendChild(p);
+}
+
 function drawRouteLines(safeRaw: RawRoute, fastRaw: RawRoute): void {
   routeLayers.forEach((l) => map.removeLayer(l));
   routeLayers = [];
@@ -254,7 +273,7 @@ function findRoute(): void {
   const fastRaw = route(graph, risk, originNode.id, destNode.id, FASTEST_LAMBDA);
 
   if (!safeRaw || !fastRaw) {
-    el<HTMLParagraphElement>('tradeoff-text').textContent = 'No route could be found between these two points.';
+    showNoRoute();
     return;
   }
 

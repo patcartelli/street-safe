@@ -390,6 +390,17 @@
     sub.textContent = message;
     emptyEl.appendChild(sub);
   }
+  function showNoRoute() {
+    routeLayers.forEach((l) => map.removeLayer(l));
+    routeLayers = [];
+    el("readout-content").classList.add("hidden");
+    const emptyEl = el("readout-empty");
+    emptyEl.classList.remove("hidden");
+    emptyEl.innerHTML = "";
+    const p = document.createElement("p");
+    p.textContent = "No route could be found between these two points.";
+    emptyEl.appendChild(p);
+  }
   function drawRouteLines(safeRaw, fastRaw) {
     routeLayers.forEach((l) => map.removeLayer(l));
     routeLayers = [];
@@ -499,7 +510,7 @@
     const safeRaw = route(graph, risk, originNode.id, destNode.id, SAFEST_LAMBDA);
     const fastRaw = route(graph, risk, originNode.id, destNode.id, FASTEST_LAMBDA);
     if (!safeRaw || !fastRaw) {
-      el("tradeoff-text").textContent = "No route could be found between these two points.";
+      showNoRoute();
       return;
     }
     const safe = explainRoute(graph, risk, safeRaw, SAFEST_LAMBDA);
