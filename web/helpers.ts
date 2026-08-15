@@ -35,3 +35,17 @@ export function avoidedComplexes(
   const fastKeys = new Set(fast.map((fl) => groupKey(fl.node_id, complexOfByNode)));
   return [...fastKeys].filter((k) => !safeKeys.has(k)).length;
 }
+
+const PERSONA_DETENTS: Array<{ lambda: number; label: string }> = [
+  { lambda: 0.5, label: 'confident walker' },
+  { lambda: 2, label: 'with a stroller' },
+  { lambda: 3, label: 'with a child' },
+];
+
+/** Persona presets are UNVALIDATED starting points (spec'd in V1, never calibrated). */
+export function personaLabel(lambda: number): string | null {
+  for (const d of PERSONA_DETENTS) {
+    if (Math.abs(lambda - d.lambda) <= 0.05 + 1e-9) return d.label;
+  }
+  return null;
+}

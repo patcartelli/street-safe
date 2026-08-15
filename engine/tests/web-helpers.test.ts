@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { dedupeFlagged, minutesAt80, avoidedComplexes } from '../../web/helpers.js';
+import { dedupeFlagged, minutesAt80, avoidedComplexes, personaLabel } from '../../web/helpers.js';
 
 const cx = new Map([['A', 'A'], ['A2', 'A'], ['B', 'B']]);
 const f = (node_id: string, crash_n: number) => ({
@@ -27,4 +27,16 @@ test('minutesAt80 rounds', () => {
 test('avoidedComplexes counts distinct complexes on fast but not safe', () => {
   assert.equal(avoidedComplexes([f('A', 3), f('A2', 7), f('B', 1)], [f('B', 1)], cx), 1); // A-complex avoided
   assert.equal(avoidedComplexes([f('B', 1)], [f('B', 1)], cx), 0);
+});
+
+test('personaLabel matches detents within ±0.05 only', () => {
+  assert.equal(personaLabel(0.5), 'confident walker');
+  assert.equal(personaLabel(0.55), 'confident walker');
+  assert.equal(personaLabel(0.56), null);
+  assert.equal(personaLabel(2), 'with a stroller');
+  assert.equal(personaLabel(1.95), 'with a stroller');
+  assert.equal(personaLabel(3.04), 'with a child');
+  assert.equal(personaLabel(0), null);
+  assert.equal(personaLabel(5), null);
+  assert.equal(personaLabel(1.2), null);
 });
