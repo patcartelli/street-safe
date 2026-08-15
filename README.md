@@ -9,28 +9,36 @@ A→B walking navigation that weighs safety alongside speed — for a small, wal
 - **A real, standalone walking-route engine (`engine/`)**, built from actual OpenStreetMap street/sidewalk geometry for South Orange, NJ, weighted by a real crash-derived risk surface and a pedestrian-comfort structural prior:
   - **Risk surface** (`engine/artifacts/risk.json`): 52 clusters snapped from real 2022–23 NJDOT crash point data (recovered from the state's crash-map HTML — the CSV export was unavailable; see extraction notes in `engine/build/extract-points.ts`), each carrying crash counts, injury/VRU counts, dominant cause, and a computed stress score.
   - **Pedestrian-LTS structural prior** (`engine/src/lts.ts`): every street/crossing carries an intrinsic stress rating derived from road class, speed, lane count, and crossing control — independent of whether a crash was ever recorded there. This is a **project-defined adaptation**, not the canonical Mekuria & Furth LTS methodology; it borrows the concept, not the published rubric.
-  - **λ-weighted router** (`engine/src/router.ts`): a single tunable knob (λ) trades route distance for lower structural (LTS) stress **and validated hotspot avoidance** — on the station→South Mountain Elementary validation pair, all top-10 crash hotspots are avoided at λ≥2 for a +264 m detour (see `npm run validate` below).
+  - **λ-weighted router** (`engine/src/router.ts`): a single tunable knob (λ) trades route distance for lower structural (LTS) stress **and validated hotspot avoidance** — on the station→South Mountain Elementary validation pair, all top-10 crash hotspots are avoided at λ≥2 for a ≈265 m detour (see `npm run validate` below).
   - **Explainability** (`engine/src/explain.ts`): per-segment stress attribution and flagged high-risk nodes along the chosen route, with dominant crash cause where available.
   - **Validation harness** (`engine/build/validate.ts`, run via `npm run validate`): sweeps λ across a fixed station-to-school pair, asserting distance/stress trend correctly, checking hotspot exposure and safety-corridor overlap, and sanity-checking output distance against a cached OSRM foot-routing baseline. Hotspot exposure is counted per physical intersection complex (deduped, not per graph node) and excludes hotspots within 100 m of the route's own endpoints; a second, unasserted pair documents one intersection (Valley×Third) that's structurally unavoidable when it sits directly on the destination's corridor.
-- **The browser demo** (`index.html` / `app.js`) is the **old, pre-engine flow**: it still calls [OSRM](https://project-osrm.org/)'s public demo router directly and re-scores alternatives against `data/mock-crashes.js`, an invented dataset. It has **not yet been wired to the new `engine/`** — that cutover is future work.
+- **The browser demo** (`index.html` / `web/main.ts`) runs the real engine **in the browser**: it fetches the committed `engine/artifacts/{graph,risk}.json`, snaps a curated set of 8 real destinations onto the graph with `nearestNode`, and calls the same `route()` / `explainRoute()` the engine tests and validation harness exercise. There is no server and no mock data — for the same start/end pair, the demo and `npm run validate` are evaluating the same router.
+  - Two tiers are drawn: **safest** (`route(λ=2)`, solid) and **fastest** (`route(λ=0)`, dashed, only when its edge sequence actually differs from safest's). This mirrors the validated λ≥2 hotspot-avoidance tier from `npm run validate` — there is no slider or arbitrary λ in the UI (Linear STC-156).
+  - The readout panel is built entirely from real `RouteResult` fields: distance delta, `avoidedComplexes` (deduped by physical intersection complex — the same dedup convention `npm run validate` uses, though its exposure metric is a narrower count: top-10-by-stress hotspots only, within 30 m, minus an endpoint buffer, so the two numbers aren't expected to match), flagged hazard nodes with their actual NJDOT-coded dominant cause where available, and `stress_cost_m`. Nothing in the readout is invented.
 
 ## What this demo honestly does NOT do yet
 
-- **The UI isn't wired to the real engine.** Everything in `engine/` (real crash risk, real LTS, real λ-weighted routing) runs and validates on its own, but `index.html`/`app.js` haven't been repointed at it. The page you can click through today is still the OSRM-rescoring prototype described above.
-- **`data/mock-crashes.js` is legacy**, kept only because the UI still depends on it pending the engine cutover. `engine/artifacts/risk.json` is the real replacement.
-- **OSRM is now a validation baseline, not a routing source for the engine.** `engine/build/fetch-osrm-baseline.ts` caches one OSRM foot-route distance/duration for the validation pair, so the harness can sanity-check the engine's output without hitting the live (rate-limited) OSRM server on every run.
 - **No elevation weighting**, in the engine or the UI. Elevation is real V1 scope, just not implemented yet.
 - **No live road closures.** Static demo only.
-- **Destinations are hardcoded** in the UI, not pulled from OpenStreetMap POI tags yet (Linear STC-154).
+- **No POI search.** Destinations are a curated, hardcoded set of 8 real places (`web/destinations.ts`), not pulled from OpenStreetMap POI tags (Linear STC-154).
+- **No λ slider or personas.** The UI only ever shows the two validated tiers, λ=2 (safest) and λ=0 (fastest); free λ selection and persona-based weighting are future scope (Linear STC-156).
+- **Walking time is a flat-pace estimate**, not a real duration model: `minutesAt80` divides route distance by a fixed 80 m/min walking pace. The UI labels this with "≈" and calls out the assumption in the readout copy; it is not derived from street type, grade, or crossing delay.
 - The pedestrian-LTS rubric is **project-defined**, adapted from the general LTS concept rather than reproducing Mekuria & Furth's published thresholds — treat comfort scores as directional, not a certified LTS classification.
 - Not a production routing backend — the underlying OSM extract and crash join cover one town; nothing here is validated at scale.
+- **Leaflet and the basemap tiles load from CDNs** (unpkg, CARTO). The routing engine itself — graph, risk surface, λ-weighted routing, explainability — runs fully locally in the page once `engine/artifacts/*.json` is fetched; only the map chrome depends on the network.
 
 ## Running it
 
-The browser demo (`index.html` / `app.js`, the legacy OSRM-rescoring prototype) needs no build step:
+The browser demo (`index.html` / `web/main.ts`, wired to the real engine) needs no build step to view — the compiled bundle is committed:
 
 ```
 npx serve .
+```
+
+If you change anything under `web/` or `engine/src`, rebuild the bundle before reloading — there's no watch mode:
+
+```
+npm run build-web
 ```
 
 The engine (`engine/`) is a separate, standalone TypeScript pipeline:
@@ -41,6 +49,11 @@ npm test              # unit + integration tests
 npm run build-engine  # rebuild engine/artifacts/{graph,risk,build-report}.json from source data
 npm run validate      # sweep λ, sanity-check against an OSRM baseline
 ```
+
+`npm run fetch-osrm` refreshes the cached OSRM validation baselines (`engine/data/osrm-baselines.json`)
+by hitting the live, rate-limited OSRM demo server once per validation pair. It's the only script
+besides `fetch-osm` that touches the network; `npm test`, `build-engine`, and `validate` all run
+against committed artifacts/caches and never call it.
 
 `npm run build-engine` **requires** the local, uncommitted `south_orange_vehicles_joined.csv`
 (crash-cause data) at `~/Documents/Claude/Projects/Linear/`, or set `SAFE_ROUTES_DATA_DIR` to
@@ -59,4 +72,4 @@ Most navigation tools optimize for speed. This project's thesis is that in a hil
 
 ## Roadmap
 
-See the Linear project for the full phased plan (V1 → V1.5 → V2 multimodal → V3 contextual/temporal weighting). This repo currently covers a slice of V1: routing + explainability, now built on real crash and street-geometry data in `engine/`, with the browser UI still pending cutover from its original mock-data prototype.
+See the Linear project for the full phased plan (V1 → V1.5 → V2 multimodal → V3 contextual/temporal weighting). This repo currently covers a slice of V1: routing + explainability, built on real crash and street-geometry data in `engine/` and wired end to end into the browser demo. POI search (STC-154) and a λ slider/persona model (STC-156) are the next scoped increments.
