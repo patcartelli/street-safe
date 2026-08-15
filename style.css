@@ -68,7 +68,7 @@ html, body {
   inset: 0;
 }
 
-.controls-stack {
+.search-bar {
   position: absolute;
   z-index: 500;
   top: 16px;
@@ -76,18 +76,18 @@ html, body {
   right: 16px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-.search-bar {
-  display: flex;
-  gap: 10px;
-  align-items: flex-end;
+  gap: 12px;
   background: rgba(23, 30, 39, 0.94);
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 14px 16px;
   backdrop-filter: blur(6px);
+}
+
+.search-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
   flex-wrap: wrap;
 }
 
@@ -135,11 +135,8 @@ html, body {
 #route-btn:disabled { opacity: 0.6; cursor: default; }
 
 .lambda-block {
-  background: rgba(23, 30, 39, 0.94);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 12px 16px 10px;
-  backdrop-filter: blur(6px);
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
 }
 
 .lambda-head {
