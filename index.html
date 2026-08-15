@@ -26,16 +26,35 @@
     <section class="map-pane">
       <div id="map"></div>
 
-      <div class="search-bar">
-        <div class="field-group">
-          <label for="start-select">From</label>
-          <select id="start-select"></select>
+      <div class="controls-stack">
+        <div class="search-bar">
+          <div class="field-group">
+            <label for="start-select">From</label>
+            <select id="start-select"></select>
+          </div>
+          <div class="field-group">
+            <label for="end-select">To</label>
+            <select id="end-select"></select>
+          </div>
+          <button id="route-btn">Find safe route</button>
         </div>
-        <div class="field-group">
-          <label for="end-select">To</label>
-          <select id="end-select"></select>
+
+        <div class="lambda-block">
+          <div class="lambda-head">
+            <label for="lambda-slider">Route preference</label>
+            <output id="lambda-value" for="lambda-slider"></output>
+          </div>
+          <input type="range" id="lambda-slider" min="0" max="5" step="0.1" value="2"
+                 aria-describedby="lambda-caption" disabled />
+          <div class="lambda-ticks" aria-hidden="true">
+            <span class="lambda-end lambda-end-left">faster</span>
+            <span class="lambda-tick" style="left: 10%">confident walker</span>
+            <span class="lambda-tick" style="left: 40%">with a stroller</span>
+            <span class="lambda-tick" style="left: 60%">with a child</span>
+            <span class="lambda-end lambda-end-right">calmer</span>
+          </div>
+          <p id="lambda-caption" class="lambda-caption">Presets are starting points, not safety guarantees.</p>
         </div>
-        <button id="route-btn">Find safe route</button>
       </div>
     </section>
 

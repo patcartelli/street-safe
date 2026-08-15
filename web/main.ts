@@ -18,7 +18,7 @@ import type { RouteResult } from '../engine/src/explain.js';
 import { explainRoute } from '../engine/src/explain.js';
 import type { NodeRisk, RiskSurface } from '../engine/src/risk.js';
 import { DESTINATIONS } from './destinations.js';
-import { avoidedComplexes, dedupeFlagged, minutesAt80 } from './helpers.js';
+import { avoidedComplexes, dedupeFlagged, minutesAt80, personaLabel } from './helpers.js';
 
 declare const L: any;
 
@@ -26,7 +26,7 @@ const GRAPH_URL = 'engine/artifacts/graph.json';
 const RISK_URL = 'engine/artifacts/risk.json';
 const DEFAULT_START_ID = 'station';
 const DEFAULT_END_ID = 'south-mountain-elem';
-const SAFEST_LAMBDA = 2;
+const DEFAULT_LAMBDA = 2;
 const FASTEST_LAMBDA = 0;
 
 // Module state, populated by init() once artifacts resolve.
@@ -36,6 +36,12 @@ let complexOfByNode: Map<string, string>;
 let destNodeById: Map<string, GraphNode>;
 let map: any;
 let routeLayers: any[] = [];
+
+// λ-slider state (Task 2). currentLambda drives every reroute; activePair pins
+// the λ=0 reference for the current origin/destination pair so dragging the
+// slider never recomputes the dashed fastest-route reference mid-drag.
+let currentLambda = DEFAULT_LAMBDA;
+let activePair: { originId: string; destId: string; fastRaw: RawRoute; fastResult: RouteResult } | null = null;
 
 function el<T extends HTMLElement>(id: string): T {
   const found = document.getElementById(id);
@@ -254,6 +260,30 @@ function renderHazardList(list: HTMLElement, safe: RouteResult): void {
   }
 }
 
+/** Routes at `currentLambda` for the pinned `activePair` and renders everything
+ *  against that pair's pinned λ=0 reference. The single render path for both
+ *  the initial Find click (via findRoute) and every slider drag. */
+function rerouteSafe(): void {
+  if (!activePair) return;
+  const { originId, destId, fastRaw, fastResult } = activePair;
+
+  const safeRaw = route(graph, risk, originId, destId, currentLambda);
+  if (!safeRaw) {
+    showNoRoute();
+    return;
+  }
+  const safe = explainRoute(graph, risk, safeRaw, currentLambda);
+
+  el<HTMLDivElement>('readout-empty').classList.add('hidden');
+  el<HTMLDivElement>('readout-content').classList.remove('hidden');
+
+  drawRouteLines(safeRaw, fastRaw);
+  renderRiskStrip(el<HTMLDivElement>('risk-strip'), safeRaw);
+  renderWhyList(el<HTMLUListElement>('why-list'), safe, fastResult);
+  renderTradeoff(el<HTMLParagraphElement>('tradeoff-text'), safeRaw, fastRaw, safe, fastResult);
+  renderHazardList(el<HTMLUListElement>('hazard-list'), safe);
+}
+
 function findRoute(): void {
   const startSel = el<HTMLSelectElement>('start-select');
   const endSel = el<HTMLSelectElement>('end-select');
@@ -269,36 +299,63 @@ function findRoute(): void {
   const destNode = destNodeById.get(endId);
   if (!originNode || !destNode) return;
 
-  const safeRaw = route(graph, risk, originNode.id, destNode.id, SAFEST_LAMBDA);
   const fastRaw = route(graph, risk, originNode.id, destNode.id, FASTEST_LAMBDA);
-
-  if (!safeRaw || !fastRaw) {
+  if (!fastRaw) {
+    activePair = null;
     showNoRoute();
     return;
   }
+  const fastResult = explainRoute(graph, risk, fastRaw, FASTEST_LAMBDA);
 
-  const safe = explainRoute(graph, risk, safeRaw, SAFEST_LAMBDA);
-  const fast = explainRoute(graph, risk, fastRaw, FASTEST_LAMBDA);
+  activePair = { originId: originNode.id, destId: destNode.id, fastRaw, fastResult };
+  rerouteSafe();
+}
 
-  el<HTMLDivElement>('readout-empty').classList.add('hidden');
-  el<HTMLDivElement>('readout-content').classList.remove('hidden');
+let rerouteScheduled = false;
+function scheduleReroute(): void {
+  if (rerouteScheduled || !activePair) return;
+  rerouteScheduled = true;
+  requestAnimationFrame(() => {
+    rerouteScheduled = false;
+    rerouteSafe();
+  });
+}
 
-  drawRouteLines(safeRaw, fastRaw);
-  renderRiskStrip(el<HTMLDivElement>('risk-strip'), safeRaw);
-  renderWhyList(el<HTMLUListElement>('why-list'), safe, fast);
-  renderTradeoff(el<HTMLParagraphElement>('tradeoff-text'), safeRaw, fastRaw, safe, fast);
-  renderHazardList(el<HTMLUListElement>('hazard-list'), safe);
+function lambdaDisplayText(lambda: number): string {
+  const persona = personaLabel(lambda);
+  const base = `λ = ${lambda.toFixed(1)}`;
+  return persona ? `${base} · ${persona}` : base;
+}
+
+function updateLambdaOutput(): void {
+  el<HTMLOutputElement>('lambda-value').textContent = lambdaDisplayText(currentLambda);
 }
 
 async function init(): Promise<void> {
   const btn = el<HTMLButtonElement>('route-btn');
   const startSel = el<HTMLSelectElement>('start-select');
   const endSel = el<HTMLSelectElement>('end-select');
+  const lambdaSlider = el<HTMLInputElement>('lambda-slider');
 
   btn.disabled = true;
   btn.textContent = 'Loading street network…';
   populateSelects(startSel, endSel);
   initMap();
+
+  updateLambdaOutput();
+
+  lambdaSlider.addEventListener('input', () => {
+    currentLambda = Number(lambdaSlider.value);
+    updateLambdaOutput();
+    scheduleReroute();
+  });
+
+  startSel.addEventListener('change', () => {
+    activePair = null;
+  });
+  endSel.addEventListener('change', () => {
+    activePair = null;
+  });
 
   let graphData: SerializedGraph;
   let riskData: RiskSurface;
@@ -327,6 +384,7 @@ async function init(): Promise<void> {
   btn.disabled = false;
   btn.textContent = 'Find safe route';
   btn.addEventListener('click', findRoute);
+  lambdaSlider.disabled = false;
 }
 
 window.addEventListener('DOMContentLoaded', () => {

@@ -308,13 +308,24 @@
     const fastKeys = new Set(fast.map((fl) => groupKey(fl.node_id, complexOfByNode2)));
     return [...fastKeys].filter((k) => !safeKeys.has(k)).length;
   }
+  var PERSONA_DETENTS = [
+    { lambda: 0.5, label: "confident walker" },
+    { lambda: 2, label: "with a stroller" },
+    { lambda: 3, label: "with a child" }
+  ];
+  function personaLabel(lambda) {
+    for (const d of PERSONA_DETENTS) {
+      if (Math.abs(lambda - d.lambda) <= 0.05 + 1e-9) return d.label;
+    }
+    return null;
+  }
 
   // web/main.ts
   var GRAPH_URL = "engine/artifacts/graph.json";
   var RISK_URL = "engine/artifacts/risk.json";
   var DEFAULT_START_ID = "station";
   var DEFAULT_END_ID = "south-mountain-elem";
-  var SAFEST_LAMBDA = 2;
+  var DEFAULT_LAMBDA = 2;
   var FASTEST_LAMBDA = 0;
   var graph;
   var risk;
@@ -322,6 +333,8 @@
   var destNodeById;
   var map;
   var routeLayers = [];
+  var currentLambda = DEFAULT_LAMBDA;
+  var activePair = null;
   function el(id) {
     const found = document.getElementById(id);
     if (!found) throw new Error(`missing #${id}`);
@@ -495,6 +508,23 @@
       list.appendChild(li);
     }
   }
+  function rerouteSafe() {
+    if (!activePair) return;
+    const { originId, destId, fastRaw, fastResult } = activePair;
+    const safeRaw = route(graph, risk, originId, destId, currentLambda);
+    if (!safeRaw) {
+      showNoRoute();
+      return;
+    }
+    const safe = explainRoute(graph, risk, safeRaw, currentLambda);
+    el("readout-empty").classList.add("hidden");
+    el("readout-content").classList.remove("hidden");
+    drawRouteLines(safeRaw, fastRaw);
+    renderRiskStrip(el("risk-strip"), safeRaw);
+    renderWhyList(el("why-list"), safe, fastResult);
+    renderTradeoff(el("tradeoff-text"), safeRaw, fastRaw, safe, fastResult);
+    renderHazardList(el("hazard-list"), safe);
+  }
   function findRoute() {
     const startSel = el("start-select");
     const endSel = el("end-select");
@@ -507,30 +537,54 @@
     const originNode = destNodeById.get(startId);
     const destNode = destNodeById.get(endId);
     if (!originNode || !destNode) return;
-    const safeRaw = route(graph, risk, originNode.id, destNode.id, SAFEST_LAMBDA);
     const fastRaw = route(graph, risk, originNode.id, destNode.id, FASTEST_LAMBDA);
-    if (!safeRaw || !fastRaw) {
+    if (!fastRaw) {
+      activePair = null;
       showNoRoute();
       return;
     }
-    const safe = explainRoute(graph, risk, safeRaw, SAFEST_LAMBDA);
-    const fast = explainRoute(graph, risk, fastRaw, FASTEST_LAMBDA);
-    el("readout-empty").classList.add("hidden");
-    el("readout-content").classList.remove("hidden");
-    drawRouteLines(safeRaw, fastRaw);
-    renderRiskStrip(el("risk-strip"), safeRaw);
-    renderWhyList(el("why-list"), safe, fast);
-    renderTradeoff(el("tradeoff-text"), safeRaw, fastRaw, safe, fast);
-    renderHazardList(el("hazard-list"), safe);
+    const fastResult = explainRoute(graph, risk, fastRaw, FASTEST_LAMBDA);
+    activePair = { originId: originNode.id, destId: destNode.id, fastRaw, fastResult };
+    rerouteSafe();
+  }
+  var rerouteScheduled = false;
+  function scheduleReroute() {
+    if (rerouteScheduled || !activePair) return;
+    rerouteScheduled = true;
+    requestAnimationFrame(() => {
+      rerouteScheduled = false;
+      rerouteSafe();
+    });
+  }
+  function lambdaDisplayText(lambda) {
+    const persona = personaLabel(lambda);
+    const base = `\u03BB = ${lambda.toFixed(1)}`;
+    return persona ? `${base} \xB7 ${persona}` : base;
+  }
+  function updateLambdaOutput() {
+    el("lambda-value").textContent = lambdaDisplayText(currentLambda);
   }
   async function init() {
     const btn = el("route-btn");
     const startSel = el("start-select");
     const endSel = el("end-select");
+    const lambdaSlider = el("lambda-slider");
     btn.disabled = true;
     btn.textContent = "Loading street network\u2026";
     populateSelects(startSel, endSel);
     initMap();
+    updateLambdaOutput();
+    lambdaSlider.addEventListener("input", () => {
+      currentLambda = Number(lambdaSlider.value);
+      updateLambdaOutput();
+      scheduleReroute();
+    });
+    startSel.addEventListener("change", () => {
+      activePair = null;
+    });
+    endSel.addEventListener("change", () => {
+      activePair = null;
+    });
     let graphData;
     let riskData;
     try {
@@ -554,6 +608,7 @@
     btn.disabled = false;
     btn.textContent = "Find safe route";
     btn.addEventListener("click", findRoute);
+    lambdaSlider.disabled = false;
   }
   window.addEventListener("DOMContentLoaded", () => {
     init().catch((err) => {
