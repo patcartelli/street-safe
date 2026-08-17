@@ -335,6 +335,7 @@
   var routeLayers = [];
   var currentLambda = DEFAULT_LAMBDA;
   var activePair = null;
+  var hasRoutedOnce = false;
   function el(id) {
     const found = document.getElementById(id);
     if (!found) throw new Error(`missing #${id}`);
@@ -545,6 +546,7 @@
     }
     const fastResult = explainRoute(graph, risk, fastRaw, FASTEST_LAMBDA);
     activePair = { originId: originNode.id, destId: destNode.id, fastRaw, fastResult };
+    hasRoutedOnce = true;
     rerouteSafe();
   }
   var rerouteScheduled = false;
@@ -561,8 +563,14 @@
     const base = `\u03BB = ${lambda.toFixed(1)}`;
     return persona ? `${base} \xB7 ${persona}` : base;
   }
+  function lambdaAriaValueText(lambda) {
+    const persona = personaLabel(lambda);
+    const base = `\u03BB ${lambda.toFixed(1)}`;
+    return persona ? `${base}, ${persona}` : base;
+  }
   function updateLambdaOutput() {
     el("lambda-value").textContent = lambdaDisplayText(currentLambda);
+    el("lambda-slider").setAttribute("aria-valuetext", lambdaAriaValueText(currentLambda));
   }
   async function init() {
     const btn = el("route-btn");
@@ -573,6 +581,7 @@
     btn.textContent = "Loading street network\u2026";
     populateSelects(startSel, endSel);
     initMap();
+    lambdaSlider.value = String(DEFAULT_LAMBDA);
     updateLambdaOutput();
     lambdaSlider.addEventListener("input", () => {
       currentLambda = Number(lambdaSlider.value);
@@ -581,9 +590,11 @@
     });
     startSel.addEventListener("change", () => {
       activePair = null;
+      if (hasRoutedOnce) findRoute();
     });
     endSel.addEventListener("change", () => {
       activePair = null;
+      if (hasRoutedOnce) findRoute();
     });
     let graphData;
     let riskData;

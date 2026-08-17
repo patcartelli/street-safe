@@ -43,6 +43,13 @@ let routeLayers: any[] = [];
 let currentLambda = DEFAULT_LAMBDA;
 let activePair: { originId: string; destId: string; fastRaw: RawRoute; fastResult: RouteResult } | null = null;
 
+// True once a route has been successfully computed at least once this session.
+// Gates auto-recompute on select change (review fix #2): before any first Find
+// click, changing a select just clears activePair and waits for the button, same
+// as always; after the first successful Find, a select change re-runs findRoute()
+// immediately so the display never sits inert showing a stale pair's route.
+let hasRoutedOnce = false;
+
 function el<T extends HTMLElement>(id: string): T {
   const found = document.getElementById(id);
   if (!found) throw new Error(`missing #${id}`);
@@ -269,6 +276,9 @@ function rerouteSafe(): void {
 
   const safeRaw = route(graph, risk, originId, destId, currentLambda);
   if (!safeRaw) {
+    // activePair intentionally stays set: the pair is proven connected (its λ=0
+    // reference succeeded), so a failed route at this one λ is transient — state
+    // self-recovers on the next drag to a λ that does route.
     showNoRoute();
     return;
   }
@@ -308,6 +318,7 @@ function findRoute(): void {
   const fastResult = explainRoute(graph, risk, fastRaw, FASTEST_LAMBDA);
 
   activePair = { originId: originNode.id, destId: destNode.id, fastRaw, fastResult };
+  hasRoutedOnce = true;
   rerouteSafe();
 }
 
@@ -327,8 +338,22 @@ function lambdaDisplayText(lambda: number): string {
   return persona ? `${base} · ${persona}` : base;
 }
 
+// Separate phrasing for aria-valuetext (e.g. "λ 2.0, with a stroller") vs. the
+// visible <output> text (e.g. "λ = 2.0 · with a stroller") — screen readers speak
+// aria-valuetext directly, so it reads better as a short comma phrase than the
+// symbolic "=" / "·" the visible label uses.
+function lambdaAriaValueText(lambda: number): string {
+  const persona = personaLabel(lambda);
+  const base = `λ ${lambda.toFixed(1)}`;
+  return persona ? `${base}, ${persona}` : base;
+}
+
+/** Updates both the visible <output> and the slider's aria-valuetext from
+ *  currentLambda — called on load and on every slider input so assistive tech
+ *  gets the persona context without depending on the output live-region. */
 function updateLambdaOutput(): void {
   el<HTMLOutputElement>('lambda-value').textContent = lambdaDisplayText(currentLambda);
+  el<HTMLInputElement>('lambda-slider').setAttribute('aria-valuetext', lambdaAriaValueText(currentLambda));
 }
 
 async function init(): Promise<void> {
@@ -342,6 +367,9 @@ async function init(): Promise<void> {
   populateSelects(startSel, endSel);
   initMap();
 
+  // Single-source the default λ from the DEFAULT_LAMBDA constant rather than
+  // trusting index.html's `value="2"` attribute to stay in sync with it.
+  lambdaSlider.value = String(DEFAULT_LAMBDA);
   updateLambdaOutput();
 
   lambdaSlider.addEventListener('input', () => {
@@ -350,11 +378,18 @@ async function init(): Promise<void> {
     scheduleReroute();
   });
 
+  // Before the first successful Find, a select change just clears activePair and
+  // waits for the button (first-visit behavior, unchanged). After a route has
+  // been computed at least once, a select change instead auto-recomputes
+  // immediately for the new pair — otherwise the map/readout would sit frozen
+  // on the old pair's route with no visible route for the newly-selected one.
   startSel.addEventListener('change', () => {
     activePair = null;
+    if (hasRoutedOnce) findRoute();
   });
   endSel.addEventListener('change', () => {
     activePair = null;
+    if (hasRoutedOnce) findRoute();
   });
 
   let graphData: SerializedGraph;

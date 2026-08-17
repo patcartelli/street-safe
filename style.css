@@ -232,11 +232,23 @@ html, body {
 .lambda-end-left { left: 0; }
 .lambda-end-right { right: 0; }
 
+/* Below ~500px (phone widths) the card is too narrow for three inner detent
+   labels plus the two endpoints without overlap ("with a stroller"/"with a
+   child" collide, "confident walker" runs into the card edge) — hide the
+   inner detent labels and keep just the faster/calmer endpoints. The persona
+   name is never lost: it still surfaces live in #lambda-value/aria-valuetext
+   as the thumb crosses a detent. */
+@media (max-width: 500px) {
+  .lambda-tick { display: none; }
+  .lambda-end { top: 0; }
+  .lambda-ticks { height: 14px; }
+}
+
 .lambda-caption {
   font-family: var(--font-mono);
-  font-size: 10.5px !important;
-  color: rgba(201, 211, 220, 0.4) !important;
-  margin: 8px 0 0 !important;
+  font-size: 10.5px;
+  color: rgba(201, 211, 220, 0.4);
+  margin: 8px 0 0;
 }
 
 .readout-pane {
