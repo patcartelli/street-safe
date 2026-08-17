@@ -18,7 +18,7 @@ import type { RouteResult } from '../engine/src/explain.js';
 import { explainRoute } from '../engine/src/explain.js';
 import type { NodeRisk, RiskSurface } from '../engine/src/risk.js';
 import { DESTINATIONS } from './destinations.js';
-import { avoidedComplexes, dedupeFlagged, minutesAt80 } from './helpers.js';
+import { avoidedComplexes, dedupeFlagged, minutesAt80, personaLabel } from './helpers.js';
 
 declare const L: any;
 
@@ -26,7 +26,7 @@ const GRAPH_URL = 'engine/artifacts/graph.json';
 const RISK_URL = 'engine/artifacts/risk.json';
 const DEFAULT_START_ID = 'station';
 const DEFAULT_END_ID = 'south-mountain-elem';
-const SAFEST_LAMBDA = 2;
+const DEFAULT_LAMBDA = 2;
 const FASTEST_LAMBDA = 0;
 
 // Module state, populated by init() once artifacts resolve.
@@ -36,6 +36,19 @@ let complexOfByNode: Map<string, string>;
 let destNodeById: Map<string, GraphNode>;
 let map: any;
 let routeLayers: any[] = [];
+
+// λ-slider state (Task 2). currentLambda drives every reroute; activePair pins
+// the λ=0 reference for the current origin/destination pair so dragging the
+// slider never recomputes the dashed fastest-route reference mid-drag.
+let currentLambda = DEFAULT_LAMBDA;
+let activePair: { originId: string; destId: string; fastRaw: RawRoute; fastResult: RouteResult } | null = null;
+
+// True once a route has been successfully computed at least once this session.
+// Gates auto-recompute on select change (review fix #2): before any first Find
+// click, changing a select just clears activePair and waits for the button, same
+// as always; after the first successful Find, a select change re-runs findRoute()
+// immediately so the display never sits inert showing a stale pair's route.
+let hasRoutedOnce = false;
 
 function el<T extends HTMLElement>(id: string): T {
   const found = document.getElementById(id);
@@ -254,6 +267,33 @@ function renderHazardList(list: HTMLElement, safe: RouteResult): void {
   }
 }
 
+/** Routes at `currentLambda` for the pinned `activePair` and renders everything
+ *  against that pair's pinned λ=0 reference. The single render path for both
+ *  the initial Find click (via findRoute) and every slider drag. */
+function rerouteSafe(): void {
+  if (!activePair) return;
+  const { originId, destId, fastRaw, fastResult } = activePair;
+
+  const safeRaw = route(graph, risk, originId, destId, currentLambda);
+  if (!safeRaw) {
+    // activePair intentionally stays set: the pair is proven connected (its λ=0
+    // reference succeeded), so a failed route at this one λ is transient — state
+    // self-recovers on the next drag to a λ that does route.
+    showNoRoute();
+    return;
+  }
+  const safe = explainRoute(graph, risk, safeRaw, currentLambda);
+
+  el<HTMLDivElement>('readout-empty').classList.add('hidden');
+  el<HTMLDivElement>('readout-content').classList.remove('hidden');
+
+  drawRouteLines(safeRaw, fastRaw);
+  renderRiskStrip(el<HTMLDivElement>('risk-strip'), safeRaw);
+  renderWhyList(el<HTMLUListElement>('why-list'), safe, fastResult);
+  renderTradeoff(el<HTMLParagraphElement>('tradeoff-text'), safeRaw, fastRaw, safe, fastResult);
+  renderHazardList(el<HTMLUListElement>('hazard-list'), safe);
+}
+
 function findRoute(): void {
   const startSel = el<HTMLSelectElement>('start-select');
   const endSel = el<HTMLSelectElement>('end-select');
@@ -269,36 +309,88 @@ function findRoute(): void {
   const destNode = destNodeById.get(endId);
   if (!originNode || !destNode) return;
 
-  const safeRaw = route(graph, risk, originNode.id, destNode.id, SAFEST_LAMBDA);
   const fastRaw = route(graph, risk, originNode.id, destNode.id, FASTEST_LAMBDA);
-
-  if (!safeRaw || !fastRaw) {
+  if (!fastRaw) {
+    activePair = null;
     showNoRoute();
     return;
   }
+  const fastResult = explainRoute(graph, risk, fastRaw, FASTEST_LAMBDA);
 
-  const safe = explainRoute(graph, risk, safeRaw, SAFEST_LAMBDA);
-  const fast = explainRoute(graph, risk, fastRaw, FASTEST_LAMBDA);
+  activePair = { originId: originNode.id, destId: destNode.id, fastRaw, fastResult };
+  hasRoutedOnce = true;
+  rerouteSafe();
+}
 
-  el<HTMLDivElement>('readout-empty').classList.add('hidden');
-  el<HTMLDivElement>('readout-content').classList.remove('hidden');
+let rerouteScheduled = false;
+function scheduleReroute(): void {
+  if (rerouteScheduled || !activePair) return;
+  rerouteScheduled = true;
+  requestAnimationFrame(() => {
+    rerouteScheduled = false;
+    rerouteSafe();
+  });
+}
 
-  drawRouteLines(safeRaw, fastRaw);
-  renderRiskStrip(el<HTMLDivElement>('risk-strip'), safeRaw);
-  renderWhyList(el<HTMLUListElement>('why-list'), safe, fast);
-  renderTradeoff(el<HTMLParagraphElement>('tradeoff-text'), safeRaw, fastRaw, safe, fast);
-  renderHazardList(el<HTMLUListElement>('hazard-list'), safe);
+function lambdaDisplayText(lambda: number): string {
+  const persona = personaLabel(lambda);
+  const base = `λ = ${lambda.toFixed(1)}`;
+  return persona ? `${base} · ${persona}` : base;
+}
+
+// Separate phrasing for aria-valuetext (e.g. "λ 2.0, with a stroller") vs. the
+// visible <output> text (e.g. "λ = 2.0 · with a stroller") — screen readers speak
+// aria-valuetext directly, so it reads better as a short comma phrase than the
+// symbolic "=" / "·" the visible label uses.
+function lambdaAriaValueText(lambda: number): string {
+  const persona = personaLabel(lambda);
+  const base = `λ ${lambda.toFixed(1)}`;
+  return persona ? `${base}, ${persona}` : base;
+}
+
+/** Updates both the visible <output> and the slider's aria-valuetext from
+ *  currentLambda — called on load and on every slider input so assistive tech
+ *  gets the persona context without depending on the output live-region. */
+function updateLambdaOutput(): void {
+  el<HTMLOutputElement>('lambda-value').textContent = lambdaDisplayText(currentLambda);
+  el<HTMLInputElement>('lambda-slider').setAttribute('aria-valuetext', lambdaAriaValueText(currentLambda));
 }
 
 async function init(): Promise<void> {
   const btn = el<HTMLButtonElement>('route-btn');
   const startSel = el<HTMLSelectElement>('start-select');
   const endSel = el<HTMLSelectElement>('end-select');
+  const lambdaSlider = el<HTMLInputElement>('lambda-slider');
 
   btn.disabled = true;
   btn.textContent = 'Loading street network…';
   populateSelects(startSel, endSel);
   initMap();
+
+  // Single-source the default λ from the DEFAULT_LAMBDA constant rather than
+  // trusting index.html's `value="2"` attribute to stay in sync with it.
+  lambdaSlider.value = String(DEFAULT_LAMBDA);
+  updateLambdaOutput();
+
+  lambdaSlider.addEventListener('input', () => {
+    currentLambda = Number(lambdaSlider.value);
+    updateLambdaOutput();
+    scheduleReroute();
+  });
+
+  // Before the first successful Find, a select change just clears activePair and
+  // waits for the button (first-visit behavior, unchanged). After a route has
+  // been computed at least once, a select change instead auto-recomputes
+  // immediately for the new pair — otherwise the map/readout would sit frozen
+  // on the old pair's route with no visible route for the newly-selected one.
+  startSel.addEventListener('change', () => {
+    activePair = null;
+    if (hasRoutedOnce) findRoute();
+  });
+  endSel.addEventListener('change', () => {
+    activePair = null;
+    if (hasRoutedOnce) findRoute();
+  });
 
   let graphData: SerializedGraph;
   let riskData: RiskSurface;
@@ -327,6 +419,7 @@ async function init(): Promise<void> {
   btn.disabled = false;
   btn.textContent = 'Find safe route';
   btn.addEventListener('click', findRoute);
+  lambdaSlider.disabled = false;
 }
 
 window.addEventListener('DOMContentLoaded', () => {
